@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = () => (
-  <div className="Header" data-testid="Header">
-    Header Component
+  <div className="link-container">
+      <Link className="link" to="/">Home</Link>
+      <Link className="link" to="/tools">Tools</Link>
   </div>
 );
 
