@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import QuoteGenerator from "../components/QuoteGenerator/QuoteGenerator";
 import IGeneratedPerson from "../interfaces/generated-person";
 import IPage from "../interfaces/page";
 import ApiService from "../services/ApiService";
@@ -22,6 +23,7 @@ const ToolsPage: React.FunctionComponent<IPage> = props => {
 			<div>
 				Name: {generatedName}
 			</div>
+			<QuoteGenerator></QuoteGenerator>
 		</div>
 	)
 }
