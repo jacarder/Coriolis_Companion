@@ -1,4 +1,6 @@
+import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
+import ThirdHorizonMap from "../components/Map/ThirdHorizonMap";
 import QuoteGenerator from "../components/QuoteGenerator/QuoteGenerator";
 import IGeneratedPerson from "../interfaces/generated-person";
 import IPage from "../interfaces/page";
@@ -18,13 +20,20 @@ const ToolsPage: React.FunctionComponent<IPage> = props => {
 		});
 	}, [])
 	return (	
-		<div>
-			<p>This is the Tools page</p>
-			<div>
+		<Grid container spacing={1}>
+			<Grid item xs={12}>
+				<p>This is the Tools page</p>
+			</Grid>
+			<Grid item xs={6}>
 				Name: {generatedName}
-			</div>
-			<QuoteGenerator></QuoteGenerator>
-		</div>
+			</Grid>
+			<Grid item xs={6}>
+				<QuoteGenerator></QuoteGenerator>
+			</Grid>
+			<Grid item xs={12}>
+				<ThirdHorizonMap></ThirdHorizonMap>
+			</Grid>
+		</Grid>
 	)
 }
 
