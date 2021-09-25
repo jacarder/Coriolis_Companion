@@ -4,12 +4,13 @@ import logo from './logo.svg';
 import './App.css';
 import routes from './config/routes';
 import Header from './components/Header/Header';
+import { Container } from '@mui/material';
 
 const App = () => {
   useEffect(() => {
   }, [])
   return (
-    <div className="App">
+    <Container fixed>
       <h1>Coriolis Companion</h1>
       <BrowserRouter>
         <Header></Header>
@@ -32,7 +33,7 @@ const App = () => {
           })}
         </Switch>
       </BrowserRouter>
-    </div>
+    </Container>
   );
 }
 
