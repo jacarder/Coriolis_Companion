@@ -7,7 +7,7 @@ const headers = {
 	'Allow-Access-Control-Origin': '*'
 }
 
-class ApiService {
+class GeneratePersonService {
 
 	getNames = async (gender: 'm' | 'f'): Promise<IGeneratedPerson> => {
 		//	TODO randomize the country code for middle east contries
@@ -33,4 +33,4 @@ class ApiService {
 	}
 }
 
-export default new ApiService;
+export default new GeneratePersonService;
