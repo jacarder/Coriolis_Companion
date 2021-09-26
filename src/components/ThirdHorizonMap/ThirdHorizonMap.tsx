@@ -3,17 +3,18 @@ import './ThirdHorizonMap.scss';
 import 'leaflet/dist/leaflet.css'
 import L, { LatLngBounds } from 'leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
+import icon2 from '../../assets/img/star_marker.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import { Container } from "@mui/material";
 import SystemDetail from "./SytemDetail";
 import { useState } from "react";
 
 let DefaultIcon = L.icon({
-	iconSize: [25, 41],
-	iconAnchor: [10, 41],
-	popupAnchor: [2, -40],
-	iconUrl: icon,
-	shadowUrl: iconShadow
+	iconSize: [15, 15],
+	//iconAnchor: [10, 41],
+	//popupAnchor: [2, -40],
+	iconUrl: icon2,
+	//shadowUrl: iconShadow
   });
 L.Marker.prototype.options.icon = DefaultIcon;
 const bounds = new LatLngBounds([52, -163], [83,0])
@@ -40,6 +41,20 @@ export default function ThirdHorizonMap() {
 					eventHandlers={{
 						click: (e) => {
 							console.log(e)
+							setsystemId('0')
+						}
+					}}
+				>
+					<Popup>
+						<span>A pretty CSS3 popup. <br/> Easily customizable.</span>
+					</Popup>
+				</Marker>
+				<Marker 
+					key={`marker-${1}`} 
+					position={[61.011, -88.74]}
+					eventHandlers={{
+						click: (e) => {
+							console.log(e)
 							setsystemId('1')
 						}
 					}}
@@ -47,7 +62,7 @@ export default function ThirdHorizonMap() {
 					<Popup>
 						<span>A pretty CSS3 popup. <br/> Easily customizable.</span>
 					</Popup>
-				</Marker>				
+				</Marker>								
 				<MapConsumer>
 					{(map) => {
 						map.setMaxZoom(5);
