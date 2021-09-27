@@ -1,22 +1,16 @@
-import { Button, Card, CardActions, CardContent, Grid, Typography } from "@mui/material";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import ThirdHorizonMapService from "../../services/ThirdHorizonMapService";
+import ISystemDetail from "../../interfaces/system-detail";
 
-interface SystemDetail {
-	name: string;
-	planetCount: number;
-}
 interface SystemDetailProps {
-	systemId: string
+	system?: ISystemDetail
 }
 
 export default function SystemDetail(props: SystemDetailProps) {
-	const [systemDetails, setSystemDetails] = useState<SystemDetail>();
+	const [systemDetails, setSystemDetails] = useState<ISystemDetail>();
 	useEffect(() => {
-		ThirdHorizonMapService.getSystemDetails(props.systemId).then((data: any) => {
-			setSystemDetails(data.data());
-		})
-	}, [props.systemId])
+		setSystemDetails(props.system);
+	}, [props.system])
 	return (
 		<Card sx={{ minWidth: 275 }}>
 		<CardContent>

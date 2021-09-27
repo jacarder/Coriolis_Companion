@@ -7,7 +7,9 @@ import icon2 from '../../assets/img/star_marker.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import { Container } from "@mui/material";
 import SystemDetail from "./SytemDetail";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ISystemDetail from "../../interfaces/system-detail";
+import ThirdHorizonMapService from "../../services/ThirdHorizonMapService";
 
 let DefaultIcon = L.icon({
 	iconSize: [15, 15],
@@ -28,41 +30,35 @@ function MyComponent() {
 
 export default function ThirdHorizonMap() {
 	
-	const [systemId, setsystemId] = useState<string>('0')
+	const [selectedSystem, setSelectedSystem] = useState<ISystemDetail>();
+	const [systems, setSystems] = useState<[ISystemDetail]>();
+
+	useEffect(() => {
+		ThirdHorizonMapService.getSystems().then((data: [ISystemDetail]) => {
+			setSystems(data);
+		})
+	}, [])
 
 	return (
 		<Container id="mapid">
-			<MapContainer center={[72, -83]} bounds={bounds} zoom={3} scrollWheelZoom={true}>				
+			<MapContainer center={[74, -83]} bounds={bounds} zoom={3} scrollWheelZoom={true}>				
 				<TileLayer url={process.env.PUBLIC_URL + "/assets/maptiles/{z}-{x}-{y}.jpg"}/>
 				<MyComponent></MyComponent>
-				<Marker 
-					key={`marker-${0}`} 
-					position={[76.616, -85.1]}
-					eventHandlers={{
-						click: (e) => {
-							console.log(e)
-							setsystemId('0')
-						}
-					}}
-				>
-					<Popup>
-						<span>A pretty CSS3 popup. <br/> Easily customizable.</span>
-					</Popup>
-				</Marker>
-				<Marker 
-					key={`marker-${1}`} 
-					position={[61.011, -88.74]}
-					eventHandlers={{
-						click: (e) => {
-							console.log(e)
-							setsystemId('1')
-						}
-					}}
-				>
-					<Popup>
-						<span>A pretty CSS3 popup. <br/> Easily customizable.</span>
-					</Popup>
-				</Marker>								
+				{systems?.map((system, index) => 
+					<Marker 
+						key={`marker-${index}`} 
+						position={[system.lat_long.latitude, system.lat_long.longitude]}
+						eventHandlers={{
+							click: (e) => {
+								setSelectedSystem(system);
+							}
+						}}
+					>
+						<Popup>
+							<span>A pretty CSS3 popup. <br/> Easily customizable.</span>
+						</Popup>
+					</Marker>
+				)}							
 				<MapConsumer>
 					{(map) => {
 						map.setMaxZoom(5);
@@ -73,7 +69,7 @@ export default function ThirdHorizonMap() {
 				</MapConsumer>				
 			</MapContainer>
 			<Container>
-				<SystemDetail systemId={systemId}></SystemDetail>
+				<SystemDetail system={selectedSystem}></SystemDetail>
 			</Container>
 		</Container>
 
