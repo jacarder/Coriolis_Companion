@@ -1,10 +1,10 @@
 import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
-import ThirdHorizonMap from "../components/Map/ThirdHorizonMap";
+import ThirdHorizonMap from "../components/ThirdHorizonMap/ThirdHorizonMap";
 import QuoteGenerator from "../components/QuoteGenerator/QuoteGenerator";
 import IGeneratedPerson from "../interfaces/generated-person";
 import IPage from "../interfaces/page";
-import ApiService from "../services/ApiService";
+import GeneratePersonService from "../services/GeneratePersonService";
 
 
 const ToolsPage: React.FunctionComponent<IPage> = props => {
@@ -12,7 +12,7 @@ const ToolsPage: React.FunctionComponent<IPage> = props => {
 	const [generatedName, setGeneratedName] = useState<string>('')
 
 	useEffect(() => {
-		ApiService.getNames("m").then((person: IGeneratedPerson) => {
+		GeneratePersonService.getNames("m").then((person: IGeneratedPerson) => {
 			setGeneratedName(`${person.firstName} ${person.lastName}`);
 			// const firstName = person.data.name.firstname.name;
 			// const lastName = person.data.name.lastname.name;

@@ -1,6 +1,6 @@
 import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
-import ApiService from '../../services/ApiService';
+import ApiService from '../../services/GeneratePersonService';
 import './QuoteGenerator.scss';
 
 interface QuoteGeneratorProps {

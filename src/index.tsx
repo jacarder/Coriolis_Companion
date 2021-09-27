@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from '@emotion/react';
 import theme from './theme';
 import { CssBaseline } from '@mui/material';
+import firebase from './utils/firebase';
 
 ReactDOM.render(
   <React.StrictMode>
