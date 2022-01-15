@@ -22,7 +22,7 @@ export default function QuoteGenerator(props: QuoteGeneratorProps) {
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Qoute of the Day
+          Quote of the Day
         </Typography>
         <Typography variant="body2">
           {randomQuote}
