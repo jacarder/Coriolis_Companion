@@ -74,7 +74,7 @@ const Bazaar: FC<BazaarProps> = () => {
           <StyledTableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
             <Collapse in={open} timeout="auto" unmountOnExit>
               <Box sx={{ margin: 1 }}>
-                <Typography variant="h6" gutterBottom component="div">
+                <Typography variant="subtitle1" gutterBottom component="div">
                   Description
                 </Typography>
                 {row.description}
