@@ -6,7 +6,6 @@ import NameGenerator from "../components/NameGenerator/NameGenerator";
 
 
 const ToolsPage: React.FunctionComponent<IPage> = props => {
-	//	TODO name generator tool will be moved to another page later. Just testing.
 	return (	
 		<Grid container spacing={1}>
 			<Grid item xs={12}>
