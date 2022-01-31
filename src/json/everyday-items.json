@@ -1,0 +1,22 @@
+[
+	{
+		"id": 0,
+		"name": "Arrash",
+		"bonusEffects": [
+			"-1 to all skill tests"
+		],
+		"cost": "25",
+		"weight": 0.25,
+		"techTier": "P",
+		"description": "Strong stimulant with pain-relieving properties. Usually smoked in a hookah or added to so-called dream wine. Leathery pieces of pressed arrash can be eaten directly, but this is considered a sign of strong addiction. The user becomes drowsy and calm. -1 to all skill tests."
+	},
+	{
+		"id": 1,
+		"name": "Cell",
+		"bonus": null,
+		"cost": 50,
+		"weight": 0.25,
+		"techTier": "O",
+		"description": "A hydrogen fuel cell, usually new, but refueled cells can also be used. Refueling stations can be found here and there on Coriolis and in other civilized places. A refueled cell is unpredictable and the GM can deplete it at the cost of 1 DP."
+	}
+]
