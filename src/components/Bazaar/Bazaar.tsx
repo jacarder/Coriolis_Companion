@@ -1,14 +1,14 @@
-import React, { FC, Fragment, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import IBazaarItem from '../../interfaces/bazaar-item';
 import BazaarService from '../../services/BazaarService';
 import './Bazaar.scss';
 import { Box, Collapse, IconButton, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { BazaarCategory } from '../../constants/BazaarCategory';
+import { BazaarCategories, BazaarCategory, IBazaarCategory } from '../../constants/BazaarCategory';
 
 interface IBazaarProps {
-  category: BazaarCategory
+  categoryId: BazaarCategory
 }
 interface IRowProps {
   row: IBazaarItem
@@ -34,10 +34,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const Bazaar: FC<IBazaarProps> = ({category}) => {
+const Bazaar: FC<IBazaarProps> = (props) => {
+  const category: IBazaarCategory | undefined = BazaarCategories.find((item) => item.id === props.categoryId);
   const [bazaarInventory, setBazaarInventory] = useState<IBazaarItem[]>([]);
+  const [error, setError] = useState<string>('');
   useEffect(() => {
-    setBazaarInventory(BazaarService.getBazaarInventory(category));
+    if(category) {
+      setBazaarInventory(BazaarService.getBazaarInventory(category.id));
+    } else {
+      setError('Error: Category does not exist.');
+    }
   }, []);
 
   function renderBonusEffects(effects: string[]) {
@@ -51,11 +57,11 @@ const Bazaar: FC<IBazaarProps> = ({category}) => {
     )
   }
 
-  function Row(props: IRowProps) {
+  const Row = (props: IRowProps) => {
     const {row} = props;
     const [open, setOpen] = useState(false);
     return (
-      <Fragment>
+      <>
         <StyledTableRow>         
           <StyledTableCell>{row.name}</StyledTableCell>
           <StyledTableCell>{row.cost}</StyledTableCell>
@@ -76,7 +82,7 @@ const Bazaar: FC<IBazaarProps> = ({category}) => {
           <StyledTableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
             <Collapse in={open} timeout="auto" unmountOnExit>
               <Box sx={{ margin: 1 }}>
-                <Typography variant="subtitle1" gutterBottom component="div">
+                <Typography variant="subtitle1" gutterBottom >
                   Description
                 </Typography>
                 {row.description}
@@ -84,30 +90,43 @@ const Bazaar: FC<IBazaarProps> = ({category}) => {
             </Collapse>
           </StyledTableCell>
         </StyledTableRow>    
-      </Fragment>
+      </>
     )
   }
 
-  return (
-    <TableContainer>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <StyledTableCell width="15%">Name</StyledTableCell>
-            <StyledTableCell width="5%">Cost</StyledTableCell>
-            <StyledTableCell width="40%">Bonus Effects</StyledTableCell>
-            <StyledTableCell width="5%">Weight</StyledTableCell>
-            <StyledTableCell width="10%">Tech Tier</StyledTableCell>
-            <StyledTableCell width="10%"/>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {bazaarInventory.map((item) => (
-            <Row key={item.id} row={item}></Row>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+return (
+  !error ?   
+    (
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+                <Box sx={{ margin: 1, width: '100%'}}>
+                  <Typography variant="h6">
+                    {category?.title}
+                  </Typography>
+                </Box>
+            </TableRow>
+            <TableRow>
+              <StyledTableCell width="15%">Name</StyledTableCell>
+              <StyledTableCell width="5%">Cost</StyledTableCell>
+              <StyledTableCell width="40%">Bonus Effects</StyledTableCell>
+              <StyledTableCell width="5%">Weight</StyledTableCell>
+              <StyledTableCell width="10%">Tech Tier</StyledTableCell>
+              <StyledTableCell width="10%"/>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {bazaarInventory.map((item) => (
+              <Row key={item.id} row={item}></Row>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>      
+    ) : (
+      // TODO create error component
+      <div>{error}</div>
+    )
   )
 };
 

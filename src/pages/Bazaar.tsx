@@ -8,8 +8,8 @@ const BazaarPage: React.FunctionComponent<IPage> = props => {
 	return (	
 		<Grid container spacing={1}>
 			<Grid item xs={12}>
-				<Bazaar category={BazaarCategory.EVERYDAY_ITEMS}></Bazaar>
-				<Bazaar category={BazaarCategory.MEDICURGICAL_TECHNOLOGY}></Bazaar>
+				<Bazaar categoryId={BazaarCategory.EVERYDAY_ITEMS}></Bazaar>
+				<Bazaar categoryId={BazaarCategory.MEDICURGICAL_TECHNOLOGY}></Bazaar>
 			</Grid>
 		</Grid>
 	)
