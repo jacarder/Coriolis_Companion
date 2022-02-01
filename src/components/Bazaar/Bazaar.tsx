@@ -49,11 +49,13 @@ const Bazaar: FC<IBazaarProps> = (props) => {
   function renderBonusEffects(effects: string[]) {
     effects = effects || [];
     return (
-      effects.map((effect) => 
-        <li key={effect}>
-          {effect}
-        </li>
-      )
+      <ul>
+        {effects.map((effect) => 
+          <li key={effect}>
+            {effect}
+          </li>
+        )}
+      </ul>
     )
   }
 
