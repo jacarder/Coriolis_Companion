@@ -98,15 +98,11 @@ return (
   !error ?   
     (
       <TableContainer>
+        <Typography variant="h6">
+          {category?.title}
+        </Typography>
         <Table>
           <TableHead>
-            <TableRow>
-                <Box sx={{ margin: 1, width: '100%'}}>
-                  <Typography variant="h6">
-                    {category?.title}
-                  </Typography>
-                </Box>
-            </TableRow>
             <TableRow>
               <StyledTableCell width="15%">Name</StyledTableCell>
               <StyledTableCell width="5%">Cost</StyledTableCell>
