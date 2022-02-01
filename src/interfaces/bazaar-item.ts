@@ -1,3 +1,5 @@
+import { BazaarCategory } from "../constants/BazaarCategory";
+
 export default interface IBazaarItem {
 	id: number;
 	name: string;
@@ -5,5 +7,6 @@ export default interface IBazaarItem {
 	cost: string,
 	weight: number,
 	techTier: "P" | "O" | "A" | string,
-	description: string
+	description: string,
+	category: BazaarCategory
 }

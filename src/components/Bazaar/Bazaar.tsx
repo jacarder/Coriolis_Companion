@@ -5,8 +5,11 @@ import './Bazaar.scss';
 import { Box, Collapse, IconButton, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { BazaarCategory } from '../../constants/BazaarCategory';
 
-interface BazaarProps {}
+interface IBazaarProps {
+  category: BazaarCategory
+}
 interface IRowProps {
   row: IBazaarItem
 }
@@ -31,11 +34,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const Bazaar: FC<BazaarProps> = () => {
+const Bazaar: FC<IBazaarProps> = ({category}) => {
   const [bazaarInventory, setBazaarInventory] = useState<IBazaarItem[]>([]);
   useEffect(() => {
-    setBazaarInventory(BazaarService.getBazaarInventory());
-  });
+    setBazaarInventory(BazaarService.getBazaarInventory(category));
+  }, []);
 
   function renderBonusEffects(effects: string[]) {
     effects = effects || [];
@@ -48,14 +51,18 @@ const Bazaar: FC<BazaarProps> = () => {
     )
   }
 
-
   function Row(props: IRowProps) {
     const {row} = props;
     const [open, setOpen] = useState(false);
     return (
       <Fragment>
-        <StyledTableRow>
-          <StyledTableCell>
+        <StyledTableRow>         
+          <StyledTableCell>{row.name}</StyledTableCell>
+          <StyledTableCell>{row.cost}</StyledTableCell>
+          <StyledTableCell>{renderBonusEffects(row.bonusEffects)}</StyledTableCell>
+          <StyledTableCell>{row.weight}</StyledTableCell>
+          <StyledTableCell>{row.techTier}</StyledTableCell>
+          <StyledTableCell align='right'>
             <IconButton
               aria-label="expand row"
               size="small"
@@ -63,12 +70,7 @@ const Bazaar: FC<BazaarProps> = () => {
             >
               {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </IconButton>
-          </StyledTableCell>          
-          <StyledTableCell>{row.name}</StyledTableCell>
-          <StyledTableCell>{row.cost}</StyledTableCell>
-          <StyledTableCell>{renderBonusEffects(row.bonusEffects)}</StyledTableCell>
-          <StyledTableCell>{row.weight}</StyledTableCell>
-          <StyledTableCell>{row.techTier}</StyledTableCell>
+          </StyledTableCell>           
         </StyledTableRow>
         <StyledTableRow>
           <StyledTableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -91,12 +93,12 @@ const Bazaar: FC<BazaarProps> = () => {
       <Table>
         <TableHead>
           <TableRow>
-            <StyledTableCell width="10%"/>
             <StyledTableCell width="15%">Name</StyledTableCell>
             <StyledTableCell width="5%">Cost</StyledTableCell>
             <StyledTableCell width="40%">Bonus Effects</StyledTableCell>
             <StyledTableCell width="5%">Weight</StyledTableCell>
             <StyledTableCell width="10%">Tech Tier</StyledTableCell>
+            <StyledTableCell width="10%"/>
           </TableRow>
         </TableHead>
         <TableBody>
