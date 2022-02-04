@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import IBazaarItem from '../../interfaces/bazaar-item';
 import BazaarService from '../../services/BazaarService';
 import './Bazaar.scss';
@@ -6,6 +6,8 @@ import { Box, Collapse, IconButton, styled, Table, TableBody, TableCell, tableCe
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { BazaarCategories, BazaarCategory, IBazaarCategory } from '../../constants/BazaarCategory';
+import { CartContext } from '../../config/cart-context';
+import { AddBox } from '@mui/icons-material';
 
 interface IBazaarProps {
   categoryId: BazaarCategory
@@ -37,6 +39,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const Bazaar: FC<IBazaarProps> = (props) => {
   const category: IBazaarCategory | undefined = BazaarCategories.find((item) => item.id === props.categoryId);
   const [bazaarInventory, setBazaarInventory] = useState<IBazaarItem[]>([]);
+  const {cart, setCart} = useContext(CartContext);
   const [error, setError] = useState<string>('');
   useEffect(() => {
     if(category) {
@@ -49,7 +52,7 @@ const Bazaar: FC<IBazaarProps> = (props) => {
   function renderBonusEffects(effects: string[]) {
     effects = effects || [];
     return (
-      <ul>
+      <ul> 
         {effects.map((effect) => 
           <li key={effect}>
             {effect}
@@ -57,6 +60,11 @@ const Bazaar: FC<IBazaarProps> = (props) => {
         )}
       </ul>
     )
+  }
+
+  function addItemHandle(item: IBazaarItem) {
+    let newCart = [...cart, item];
+    setCart(newCart);
   }
 
   const Row = (props: IRowProps) => {
@@ -71,6 +79,12 @@ const Bazaar: FC<IBazaarProps> = (props) => {
           <StyledTableCell>{row.weight}</StyledTableCell>
           <StyledTableCell>{row.techTier}</StyledTableCell>
           <StyledTableCell align='right'>
+            <IconButton
+              size="small"
+              onClick={() => addItemHandle(row)}
+            >
+              <AddBox/>
+            </IconButton>
             <IconButton
               aria-label="expand row"
               size="small"

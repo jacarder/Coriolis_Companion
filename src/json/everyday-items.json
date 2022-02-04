@@ -5,7 +5,7 @@
 		"bonusEffects": [
 			"-1 to all skill tests"
 		],
-		"cost": "25",
+		"cost": 25,
 		"weight": 0.25,
 		"techTier": "P",
 		"description": "Strong stimulant with pain-relieving properties. Usually smoked in a hookah or added to so-called dream wine. Leathery pieces of pressed arrash can be eaten directly, but this is considered a sign of strong addiction. The user becomes drowsy and calm. -1 to all skill tests.",

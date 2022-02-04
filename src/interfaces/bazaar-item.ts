@@ -4,7 +4,7 @@ export default interface IBazaarItem {
 	id: number;
 	name: string;
 	bonusEffects: string[],
-	cost: string,
+	cost: number,
 	weight: number,
 	techTier: "P" | "O" | "A" | string,
 	description: string,
