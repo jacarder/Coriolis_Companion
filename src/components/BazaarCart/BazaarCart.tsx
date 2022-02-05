@@ -103,8 +103,8 @@ const BazaarCart: FC<BazaarCartProps> = () => {
         </Grid>
       </Typography>      
     </CardContent>
-    <CardActions>
-      <Button variant="contained">Checkout</Button>
+    <CardActions >
+        <Button variant="contained" color="secondary">Checkout</Button>
     </CardActions>
   </Card>
 

@@ -107,7 +107,7 @@ const Bazaar: FC<IBazaarProps> = (props) => {
                 />
               </Grid>
               <Grid item xs={6}>
-                <Button variant="contained" onClick={() => handleAddItem(row)}>Add</Button>
+                <Button variant="contained" color="secondary" onClick={() => handleAddItem(row)}>Add</Button>
               </Grid>
             </Grid>
           </StyledTableCell>
