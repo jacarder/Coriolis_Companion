@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FC, useContext, useEffect, useState } from 'react';
 import BazaarService from '../../services/BazaarService';
 import './Bazaar.scss';
-import { Box, Button, Collapse, IconButton, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import { Box, Button, Collapse, Grid, IconButton, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { BazaarCategories, BazaarCategory, IBazaarCategory } from '../../constants/BazaarCategory';
@@ -78,6 +78,12 @@ const Bazaar: FC<IBazaarProps> = (props) => {
     const handleChangeQuantity = (e: ChangeEvent<HTMLInputElement>) => {
       setQuantity(+e.target.value);
     }
+    const quantityAddButtonStyle = {
+      display: "flex",
+      alignContent: "center",
+      justifyContent: "center",
+      alignItems: "center"      
+    }
     return (
       <>
         <StyledTableRow>         
@@ -87,17 +93,23 @@ const Bazaar: FC<IBazaarProps> = (props) => {
           <StyledTableCell>{row.weight}</StyledTableCell>
           <StyledTableCell>{row.techTier}</StyledTableCell>
           <StyledTableCell>
-            <TextField
-              id={`quantity-${row.id}`}
-              label="Quantity"
-              type="number"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              variant="filled"
-              onChange={handleChangeQuantity}
-            />
-            <Button variant="contained" onClick={() => handleAddItem(row)}>Add to Cart</Button>
+            <Grid container spacing={1} style={quantityAddButtonStyle}>
+              <Grid item xs={6}>
+                <TextField
+                  id={`quantity-${row.id}`}
+                  label="Quantity"
+                  type="number"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="outlined"
+                  onChange={handleChangeQuantity}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <Button variant="contained" onClick={() => handleAddItem(row)}>Add</Button>
+              </Grid>
+            </Grid>
           </StyledTableCell>
           <StyledTableCell align='right'>
             <IconButton
@@ -140,8 +152,8 @@ return (
               <StyledTableCell width="40%">Bonus Effects</StyledTableCell>
               <StyledTableCell width="5%">Weight</StyledTableCell>
               <StyledTableCell width="10%">Tech Tier</StyledTableCell>
-              <StyledTableCell width="10%">Quantity</StyledTableCell>
-              <StyledTableCell width="10%"/>
+              <StyledTableCell width="20%">Quantity</StyledTableCell>
+              <StyledTableCell width="5%"/>
             </TableRow>
           </TableHead>
           <TableBody>
