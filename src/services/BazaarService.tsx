@@ -1,9 +1,9 @@
 import { BazaarCategory } from "../constants/BazaarCategory";
-import IBazaarItem from "../interfaces/bazaar-item";
+import { IBazaarItemDisplay } from "../interfaces/bazaar-item";
 
 class BazaarService {
-	getBazaarInventory = (category: BazaarCategory): IBazaarItem[] => {
-		let inventory = require('../json/everyday-items.json') as IBazaarItem[];
+	getBazaarInventory = (category: BazaarCategory): IBazaarItemDisplay[] => {
+		let inventory = require('../json/everyday-items.json') as IBazaarItemDisplay[];
 		return inventory.filter((item) => item.category === category);
 	}
 }

@@ -1,19 +1,19 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
-import IBazaarItem from '../../interfaces/bazaar-item';
+import React, { ChangeEvent, FC, useContext, useEffect, useState } from 'react';
 import BazaarService from '../../services/BazaarService';
 import './Bazaar.scss';
-import { Box, Collapse, IconButton, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Button, Collapse, IconButton, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { BazaarCategories, BazaarCategory, IBazaarCategory } from '../../constants/BazaarCategory';
 import { CartContext } from '../../config/cart-context';
 import { AddBox } from '@mui/icons-material';
+import { IBazaarCartItem, IBazaarItemDisplay } from '../../interfaces/bazaar-item';
 
 interface IBazaarProps {
   categoryId: BazaarCategory
 }
 interface IRowProps {
-  row: IBazaarItem
+  row: IBazaarItemDisplay
 }
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -38,7 +38,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const Bazaar: FC<IBazaarProps> = (props) => {
   const category: IBazaarCategory | undefined = BazaarCategories.find((item) => item.id === props.categoryId);
-  const [bazaarInventory, setBazaarInventory] = useState<IBazaarItem[]>([]);
+  const [bazaarInventory, setBazaarInventory] = useState<IBazaarItemDisplay[]>([]);
   const {cart, setCart} = useContext(CartContext);
   const [error, setError] = useState<string>('');
   useEffect(() => {
@@ -49,27 +49,35 @@ const Bazaar: FC<IBazaarProps> = (props) => {
     }
   }, []);
 
-  function renderBonusEffects(effects: string[]) {
-    effects = effects || [];
-    return (
-      <ul> 
-        {effects.map((effect) => 
-          <li key={effect}>
-            {effect}
-          </li>
-        )}
-      </ul>
-    )
-  }
-
-  function addItemHandle(item: IBazaarItem) {
-    let newCart = [...cart, item];
-    setCart(newCart);
-  }
-
   const Row = (props: IRowProps) => {
     const {row} = props;
     const [open, setOpen] = useState(false);
+    const [quantity, setQuantity] = useState(0);
+    const renderBonusEffects = (effects: string[]) => {
+      effects = effects || [];
+      return (
+        <ul> 
+          {effects.map((effect) => 
+            <li key={effect}>
+              {effect}
+            </li>
+          )}
+        </ul>
+      )
+    }
+    const handleAddItem = (item: IBazaarItemDisplay) => {
+      const quantityTotal = {
+        quantity: quantity,
+        total: 0
+      } as IBazaarCartItem
+      const cartItem: IBazaarCartItem = {...item, ...quantityTotal};
+      let newCart = [...cart, cartItem];      
+      setCart(newCart);
+      setQuantity(0);
+    }
+    const handleChangeQuantity = (e: ChangeEvent<HTMLInputElement>) => {
+      setQuantity(+e.target.value);
+    }
     return (
       <>
         <StyledTableRow>         
@@ -78,13 +86,20 @@ const Bazaar: FC<IBazaarProps> = (props) => {
           <StyledTableCell>{renderBonusEffects(row.bonusEffects)}</StyledTableCell>
           <StyledTableCell>{row.weight}</StyledTableCell>
           <StyledTableCell>{row.techTier}</StyledTableCell>
+          <StyledTableCell>
+            <TextField
+              id={`quantity-${row.id}`}
+              label="Quantity"
+              type="number"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="filled"
+              onChange={handleChangeQuantity}
+            />
+            <Button variant="contained" onClick={() => handleAddItem(row)}>Add to Cart</Button>
+          </StyledTableCell>
           <StyledTableCell align='right'>
-            <IconButton
-              size="small"
-              onClick={() => addItemHandle(row)}
-            >
-              <AddBox/>
-            </IconButton>
             <IconButton
               aria-label="expand row"
               size="small"
@@ -125,6 +140,7 @@ return (
               <StyledTableCell width="40%">Bonus Effects</StyledTableCell>
               <StyledTableCell width="5%">Weight</StyledTableCell>
               <StyledTableCell width="10%">Tech Tier</StyledTableCell>
+              <StyledTableCell width="10%">Quantity</StyledTableCell>
               <StyledTableCell width="10%"/>
             </TableRow>
           </TableHead>

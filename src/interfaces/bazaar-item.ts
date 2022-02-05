@@ -1,12 +1,20 @@
 import { BazaarCategory } from "../constants/BazaarCategory";
 
-export default interface IBazaarItem {
+interface IBazaarItem {
 	id: number;
 	name: string;
+	cost: number;
+}
+
+export interface IBazaarItemDisplay extends IBazaarItem {
 	bonusEffects: string[],
-	cost: number,
 	weight: number,
 	techTier: "P" | "O" | "A" | string,
 	description: string,
 	category: BazaarCategory
+}
+
+export interface IBazaarCartItem extends IBazaarItem {
+	quantity: number;
+	total: number;
 }

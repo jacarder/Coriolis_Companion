@@ -18,12 +18,13 @@ const BazaarCart: FC<BazaarCartProps> = () => {
       const t = newCartFormat.find((quantItem) => quantItem.itemId === item.id);
       if(!t) {
         const itemsInCart = cart.filter((quantItem) => quantItem.id === item.id);
-        const total = itemsInCart.map((item) => item.cost).reduce((a, b) => a + b);
+        const totalQuantity = itemsInCart.map((item) => item.quantity).reduce((a, b) => a + b);
+        const totalCost = item.cost * totalQuantity;
         newCartFormat.push({
           itemId: item.id,
-          quantity: itemsInCart.length,
+          quantity: totalQuantity,
           itemName: item.name,
-          total: total
+          total: totalCost
         } as ICart)
       }
     })
@@ -33,7 +34,7 @@ const BazaarCart: FC<BazaarCartProps> = () => {
   return (
     <div>
       Bazaar Cart
-      {cartFormat.map(item => <li key={item.itemId}>{item.itemName} X {item.quantity} | Total: {item.total}</li>)}
+      {cartFormat.map(item => <li key={item.itemId}>{item.itemName} X {item.quantity} | Sub Total: {item.total}</li>)}
       <div>Total: {cartFormat.map((item) => item.total).reduce((a, b) => a + b, 0)}</div>
     </div>
   )
