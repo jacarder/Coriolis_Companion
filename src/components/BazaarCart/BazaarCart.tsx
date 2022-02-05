@@ -1,3 +1,4 @@
+import { Box, Button, Card, CardActions, CardContent, Grid, Typography } from '@mui/material';
 import React, { FC, useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../config/cart-context';
 import './BazaarCart.scss';
@@ -32,11 +33,44 @@ const BazaarCart: FC<BazaarCartProps> = () => {
   }, [cart]);
   
   return (
-    <div>
-      Bazaar Cart
-      {cartFormat.map(item => <li key={item.itemId}>{item.itemName} X {item.quantity} | Sub Total: {item.total}</li>)}
-      <div>Total: {cartFormat.map((item) => item.total).reduce((a, b) => a + b, 0)}</div>
-    </div>
+    <Card sx={{ minWidth: 275, maxWidth: 275 }}>
+    <CardContent>
+      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        Bazaar Cart
+      </Typography>
+      <Typography variant="body2" gutterBottom>
+        {cartFormat.map(item => 
+          <Grid key={item.itemId} container spacing={1}>
+            <Grid item xs={6}>
+              {item.itemName} x {item.quantity}
+            </Grid>
+            <Grid item xs={6}>
+              <Box display="flex" justifyContent="flex-end">
+                {item.total}
+              </Box>
+            </Grid>            
+          </Grid>
+        )}        
+      </Typography>
+      <Typography variant="h6">
+        <Grid container spacing={1}>
+          <Grid item xs={6}>
+              Total:
+          </Grid>
+          <Grid item xs={6}>
+            <Box display="flex" justifyContent="flex-end">
+              {cartFormat.map((item) => item.total).reduce((a, b) => a + b, 0)}
+            </Box>
+          </Grid>
+        </Grid>
+      </Typography>      
+    </CardContent>
+    <CardActions>
+      <Button variant="contained">Checkout</Button>
+    </CardActions>
+  </Card>
+
+
   )
 };
 
