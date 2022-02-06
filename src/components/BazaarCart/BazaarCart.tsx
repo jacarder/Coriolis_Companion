@@ -53,9 +53,6 @@ const BazaarCart: FC<BazaarCartProps> = () => {
   }
   return (
     <>
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom component={'div'}>
-        Bazaar Cart
-      </Typography>
       <Typography variant="body2" gutterBottom component={'div'}>
         {cartFormat.map(item => 
           <Grid key={item.itemId} container spacing={1} style={gridFlexAlign}>

@@ -10,7 +10,7 @@ const BazaarPage: React.FunctionComponent<IPage> = props => {
 	
 	return (
 		<CartContextProvider>
-			<Slider>
+			<Slider sliderTitle="Bazaar Cart">
 				<BazaarCart></BazaarCart>	
 			</Slider>
 			<Grid container spacing={1}>
