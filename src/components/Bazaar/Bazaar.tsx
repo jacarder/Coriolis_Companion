@@ -6,7 +6,6 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { BazaarCategories, BazaarCategory, IBazaarCategory } from '../../constants/BazaarCategory';
 import { CartContext } from '../../config/cart-context';
-import { AddBox } from '@mui/icons-material';
 import { IBazaarCartItem, IBazaarItemDisplay } from '../../interfaces/bazaar-item';
 
 interface IBazaarProps {
@@ -43,6 +42,7 @@ const Bazaar: FC<IBazaarProps> = (props) => {
   const [error, setError] = useState<string>('');
   useEffect(() => {
     if(category) {
+      console.log("t")
       setBazaarInventory(BazaarService.getBazaarInventory(category.id));
     } else {
       setError('Error: Category does not exist.');
@@ -50,6 +50,7 @@ const Bazaar: FC<IBazaarProps> = (props) => {
   }, []);
 
   const Row = (props: IRowProps) => {
+    console.log(props)
     const {row} = props;
     const [open, setOpen] = useState(false);
     const [quantity, setQuantity] = useState(0);
@@ -71,7 +72,8 @@ const Bazaar: FC<IBazaarProps> = (props) => {
         total: 0
       } as IBazaarCartItem
       const cartItem: IBazaarCartItem = {...item, ...quantityTotal};
-      let newCart = [...cart, cartItem];      
+      let newCart = [...cart, cartItem];
+      //  TODO setting context rerendors page    
       setCart(newCart);
       setQuantity(0);
     }

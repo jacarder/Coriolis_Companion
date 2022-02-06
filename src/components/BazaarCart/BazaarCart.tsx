@@ -52,8 +52,7 @@ const BazaarCart: FC<BazaarCartProps> = () => {
     alignItems: 'flex-end'
   }
   return (
-    <Card sx={{ minWidth: 275, maxWidth: 275 }}>
-    <CardContent>
+    <>
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom component={'div'}>
         Bazaar Cart
       </Typography>
@@ -102,13 +101,8 @@ const BazaarCart: FC<BazaarCartProps> = () => {
           </Grid>
         </Grid>
       </Typography>      
-    </CardContent>
-    <CardActions >
-        <Button variant="contained" color="secondary">Checkout</Button>
-    </CardActions>
-  </Card>
-
-
+      <Button fullWidth variant="contained" color="secondary">Checkout</Button>
+    </>
   )
 };
 

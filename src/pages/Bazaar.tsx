@@ -4,12 +4,15 @@ import Bazaar from "../components/Bazaar/Bazaar";
 import { BazaarCategory } from "../constants/BazaarCategory";
 import BazaarCart from "../components/BazaarCart/BazaarCart";
 import CartContextProvider from "../config/cart-context-provider";
+import Slider from "../components/Slider/Slider";
 
 const BazaarPage: React.FunctionComponent<IPage> = props => {
 	
 	return (
 		<CartContextProvider>
-			<BazaarCart></BazaarCart>	
+			<Slider>
+				<BazaarCart></BazaarCart>	
+			</Slider>
 			<Grid container spacing={1}>
 				<Grid item xs={12}>				
 					<Bazaar categoryId={BazaarCategory.EVERYDAY_ITEMS}></Bazaar>
