@@ -7,7 +7,6 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { BazaarCategories, BazaarCategory, IBazaarCategory } from '../../constants/BazaarCategory';
 import { CartContext } from '../../config/cart-context';
 import { IBazaarCartItem, IBazaarItemDisplay } from '../../interfaces/bazaar-item';
-import { PanoramaPhotosphereRounded } from '@mui/icons-material';
 
 interface IBazaarProps {
   categoryId: BazaarCategory
