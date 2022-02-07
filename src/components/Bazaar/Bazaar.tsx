@@ -1,12 +1,13 @@
 import React, { ChangeEvent, FC, useContext, useEffect, useState } from 'react';
 import BazaarService from '../../services/BazaarService';
 import './Bazaar.scss';
-import { Box, Button, Collapse, Grid, IconButton, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import { Box, Button, Collapse, Grid, IconButton, Paper, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { BazaarCategories, BazaarCategory, IBazaarCategory } from '../../constants/BazaarCategory';
 import { CartContext } from '../../config/cart-context';
 import { IBazaarCartItem, IBazaarItemDisplay } from '../../interfaces/bazaar-item';
+import { PanoramaPhotosphereRounded } from '@mui/icons-material';
 
 interface IBazaarProps {
   categoryId: BazaarCategory
@@ -21,7 +22,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
+    fontSize: 14
   },
 }));
 
@@ -142,29 +143,31 @@ const Bazaar: FC<IBazaarProps> = (props) => {
 return (
   !error ?   
     (
-      <TableContainer>
+      <>
         <Typography variant="h6">
           {category?.title}
         </Typography>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <StyledTableCell width="15%">Name</StyledTableCell>
-              <StyledTableCell width="5%">Cost</StyledTableCell>
-              <StyledTableCell width="40%">Bonus Effects</StyledTableCell>
-              <StyledTableCell width="5%">Weight</StyledTableCell>
-              <StyledTableCell width="10%">Tech Tier</StyledTableCell>
-              <StyledTableCell width="20%">Quantity</StyledTableCell>
-              <StyledTableCell width="5%"/>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {bazaarInventory.map((item) => (
-              <Row key={item.id} row={item}></Row>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>      
+        <TableContainer component={Paper}>
+          <Table sx={{borderRadius: '5px 5px 5px 5px'}}>
+            <TableHead>
+              <TableRow>
+                <StyledTableCell width="15%">Name</StyledTableCell>
+                <StyledTableCell width="5%">Cost</StyledTableCell>
+                <StyledTableCell width="40%">Bonus Effects</StyledTableCell>
+                <StyledTableCell width="5%">Weight</StyledTableCell>
+                <StyledTableCell width="10%">Tech Tier</StyledTableCell>
+                <StyledTableCell width="20%">Quantity</StyledTableCell>
+                <StyledTableCell width="5%"/>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {bazaarInventory.map((item) => (
+                <Row key={item.id} row={item}></Row>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </>
     ) : (
       // TODO create error component
       <div>{error}</div>
