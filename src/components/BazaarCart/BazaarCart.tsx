@@ -42,8 +42,18 @@ const BazaarCart: FC<BazaarCartProps> = () => {
         //  Remove item from cart
         newCart = cart.filter((item) => item.id !== itemId);
       } else {
-        newCart = cart.map((item) => existingItem.id === item.id ? existingItem : item)
+        cart.forEach((item) => {
+          if(item.id === existingItem.id) {
+            if(newCart.filter((cartItem) => cartItem.id === existingItem.id).length < 1) {
+              newCart.push(existingItem);
+            }
+          } else {
+            newCart.push(item);
+          }
+        })
+        
       }
+      console.log(newCart, cart)
       setCart(newCart)
     }
   }
