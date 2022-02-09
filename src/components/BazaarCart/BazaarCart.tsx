@@ -1,4 +1,4 @@
-import { Box, Button, Grid, TextField, Typography } from '@mui/material';
+import { Box, Button, Divider, Grid, TextField, Typography } from '@mui/material';
 import React, { ChangeEvent, FC, useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../config/cart-context';
 import { IBazaarCartItem } from '../../interfaces/bazaar-item';
@@ -95,7 +95,7 @@ const BazaarCart: FC<BazaarCartProps> = () => {
         )}        
       </Typography>
       <Typography variant="h6">
-        <hr/>
+        <Divider/>
         <Grid container spacing={1}>
           <Grid item xs={6}>
               Total:
