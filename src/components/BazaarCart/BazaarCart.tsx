@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, Grid, TextField, Typography } from '@mui/material';
+import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import React, { ChangeEvent, FC, useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../config/cart-context';
 import { IBazaarCartItem } from '../../interfaces/bazaar-item';
@@ -53,7 +53,6 @@ const BazaarCart: FC<BazaarCartProps> = () => {
         })
         
       }
-      console.log(newCart, cart)
       setCart(newCart)
     }
   }
