@@ -14,11 +14,11 @@ const KnowledgeCenterPage: React.FunctionComponent<IPage> = props => {
 	}
 	return (
 		<Grid container spacing={1} component={Paper}>
-			<Grid item xs={3}>				
-				<TableOfContents></TableOfContents>
+			<Grid item xs={3} sx={{borderRight: 'grey solid 1px'}}>				
+				<TableOfContents selectSection={selectSection}></TableOfContents>
 			</Grid>
 			<Grid item xs={9}>				
-				<KnowledgeContent dataId={dataId} selectSection={selectSection}></KnowledgeContent>
+				<KnowledgeContent dataId={dataId}></KnowledgeContent>
 			</Grid>			
 		</Grid>
 	)
