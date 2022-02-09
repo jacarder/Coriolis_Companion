@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useContext, useEffect, useState } from 'react';
+import React, { ChangeEvent, FC, useContext, useEffect, useMemo, useState } from 'react';
 import BazaarService from '../../services/BazaarService';
 import './Bazaar.scss';
 import { Box, Button, Collapse, Grid, IconButton, Paper, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
@@ -38,11 +38,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const Bazaar: FC<IBazaarProps> = (props) => {
   const category: IBazaarCategory | undefined = BazaarCategories.find((item) => item.id === props.categoryId);
   const [bazaarInventory, setBazaarInventory] = useState<IBazaarItemDisplay[]>([]);
-  const {cart, setCart} = useContext(CartContext);
   const [error, setError] = useState<string>('');
   useEffect(() => {
     if(category) {
-      console.log("t")
       setBazaarInventory(BazaarService.getBazaarInventory(category.id));
     } else {
       setError('Error: Category does not exist.');
@@ -50,10 +48,10 @@ const Bazaar: FC<IBazaarProps> = (props) => {
   }, []);
 
   const Row = (props: IRowProps) => {
-    console.log(props)
     const {row} = props;
     const [open, setOpen] = useState(false);
     const [quantity, setQuantity] = useState(0);
+    const {cart, setCart} = useContext(CartContext);
     const renderBonusEffects = (effects: string[]) => {
       effects = effects || [];
       return (
@@ -106,6 +104,7 @@ const Bazaar: FC<IBazaarProps> = (props) => {
                   }}
                   variant="outlined"
                   onChange={handleChangeQuantity}
+                  value={quantity}
                 />
               </Grid>
               <Grid item xs={6}>
@@ -139,6 +138,9 @@ const Bazaar: FC<IBazaarProps> = (props) => {
     )
   }
 
+const inventoryList = useMemo(() => bazaarInventory.map((item) => (
+  <Row key={item.id} row={item}></Row>
+)), [bazaarInventory])
 return (
   !error ?   
     (
@@ -160,9 +162,7 @@ return (
               </TableRow>
             </TableHead>
             <TableBody>
-              {bazaarInventory.map((item) => (
-                <Row key={item.id} row={item}></Row>
-              ))}
+              {inventoryList}
             </TableBody>
           </Table>
         </TableContainer>
