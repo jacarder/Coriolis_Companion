@@ -1,0 +1,35 @@
+[
+	{
+		"id": "0",
+		"name": "Welcome",
+		"children": []
+	},
+	{
+		"id": "1",
+		"name": "Coriolis Station",
+		"children": [
+			{
+				"id": "2",
+				"name": "The Core"
+			},
+			{
+				"id": "3",
+				"name": "The Ring"
+			}
+		]
+	},
+	{
+		"id": "4",
+		"name": "Factions",
+		"children": [
+			{
+				"id": "5",
+				"name": "The Legion"
+			},
+			{
+				"id": "6",
+				"name": "The Hegemony"
+			}
+		]
+	}	
+]
