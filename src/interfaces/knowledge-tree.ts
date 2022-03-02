@@ -4,5 +4,5 @@ interface IKnowledgeTree {
 }
 
 export interface IKnowledgeTreeItem extends IKnowledgeTree {
-	children: IKnowledgeTreeItem[]
+	children?: IKnowledgeTreeItem[]
 }
