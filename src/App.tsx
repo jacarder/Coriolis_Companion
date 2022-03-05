@@ -12,7 +12,7 @@ const App = () => {
   return (
     <Container fixed>
       <h1>Coriolis Companion</h1>
-      <BrowserRouter>
+      <BrowserRouter basename="/Coriolis_Companion">
         <Header></Header>
         <Switch>
           {routes.map((route, index) => {
