@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Coriolis_Companion/static/css/main.2f4cb35e.chunk.css",
+    "main.js": "/Coriolis_Companion/static/js/main.7d49f1f4.chunk.js",
+    "main.js.map": "/Coriolis_Companion/static/js/main.7d49f1f4.chunk.js.map",
+    "runtime-main.js": "/Coriolis_Companion/static/js/runtime-main.0289bea9.js",
+    "runtime-main.js.map": "/Coriolis_Companion/static/js/runtime-main.0289bea9.js.map",
+    "static/css/2.da98c186.chunk.css": "/Coriolis_Companion/static/css/2.da98c186.chunk.css",
+    "static/js/2.15efb6e7.chunk.js": "/Coriolis_Companion/static/js/2.15efb6e7.chunk.js",
+    "static/js/2.15efb6e7.chunk.js.map": "/Coriolis_Companion/static/js/2.15efb6e7.chunk.js.map",
+    "static/js/3.db4278b2.chunk.js": "/Coriolis_Companion/static/js/3.db4278b2.chunk.js",
+    "static/js/3.db4278b2.chunk.js.map": "/Coriolis_Companion/static/js/3.db4278b2.chunk.js.map",
+    "index.html": "/Coriolis_Companion/index.html",
+    "static/css/2.da98c186.chunk.css.map": "/Coriolis_Companion/static/css/2.da98c186.chunk.css.map",
+    "static/css/main.2f4cb35e.chunk.css.map": "/Coriolis_Companion/static/css/main.2f4cb35e.chunk.css.map",
+    "static/js/2.15efb6e7.chunk.js.LICENSE.txt": "/Coriolis_Companion/static/js/2.15efb6e7.chunk.js.LICENSE.txt",
+    "static/media/star_marker.0d2f81f4.png": "/Coriolis_Companion/static/media/star_marker.0d2f81f4.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0289bea9.js",
+    "static/css/2.da98c186.chunk.css",
+    "static/js/2.15efb6e7.chunk.js",
+    "static/css/main.2f4cb35e.chunk.css",
+    "static/js/main.7d49f1f4.chunk.js"
+  ]
+}
