@@ -15,6 +15,7 @@ code {
 
 // Background
 .stars, .twinkling, .clouds {
+	position:absolute;
 	display:block;
 	top:0; bottom:0;
 	left:0; right:0;
@@ -22,21 +23,18 @@ code {
 }
 
 .stars {
-	position:relative;
 	z-index: 0;
 	background: #000 url('https://image.ibb.co/mjnygo/stars.png') repeat top center;
   	animation: move-twink-back 1500s linear infinite;
 }
 
 .twinkling{
-	position:absolute;
 	z-index: 1;
 	background:transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
 	animation: move-twink-back 500s linear infinite;
 }
 
 .clouds{
-	position:absolute;
 	z-index: 2;
     background:transparent url('https://image.ibb.co/bT4N7T/clouds.png') repeat top center;
 	animation: move-clouds-back 300s linear infinite;

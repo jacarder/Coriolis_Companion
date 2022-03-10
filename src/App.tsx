@@ -9,10 +9,10 @@ import { Box, Container, Typography } from '@mui/material';
 const App = () => {
   useEffect(() => {
   }, [])
-  document.body.classList.add('stars');
-  //document.body.appendChild()
+  //document.body.classList.add('stars');
   return (
     <>
+      <div className="stars"></div>
       <div className="twinkling"></div>
       <div className="clouds"></div>
       <Container fixed sx={{zIndex: 10, position: 'relative'}}>
