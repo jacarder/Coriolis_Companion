@@ -8,9 +8,6 @@ import NameGenerator from "../components/NameGenerator/NameGenerator";
 const ToolsPage: React.FunctionComponent<IPage> = props => {
 	return (	
 		<Grid container spacing={1}>
-			<Grid item xs={12}>
-				<p>This is the Tools page</p>
-			</Grid>
 			<Grid item xs={6}>
 				<NameGenerator></NameGenerator>
 			</Grid>

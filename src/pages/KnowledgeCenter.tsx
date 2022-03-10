@@ -13,13 +13,13 @@ const KnowledgeCenterPage: React.FunctionComponent<IPage> = props => {
 		setDataId(selectedDataId);
 	}
 	return (
-		<Grid container spacing={1} component={Paper}>
+		<Grid container xs={12} spacing={1} component={Paper} sx={{marginLeft: 0, marginTop: 0}}>
 			<Grid item xs={3} sx={{borderRight: 'grey solid 1px'}}>				
 				<TableOfContents selectSection={selectSection}></TableOfContents>
 			</Grid>
 			<Grid item xs={9}>				
 				<KnowledgeContent dataId={dataId}></KnowledgeContent>
-			</Grid>			
+			</Grid>
 		</Grid>
 	)
 }
