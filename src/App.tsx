@@ -16,9 +16,6 @@ const App = () => {
       <div className="twinkling"></div>
       <div className="clouds"></div>
       <Container fixed sx={{zIndex: 10, position: 'relative'}}>
-        <Typography color="white" variant="h4">
-          Coriolis Companion
-        </Typography>
         <BrowserRouter basename="/Coriolis_Companion">
           <Header></Header>
           <Switch>
