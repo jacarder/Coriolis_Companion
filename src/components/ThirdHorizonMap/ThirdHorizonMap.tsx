@@ -5,7 +5,7 @@ import L, { LatLngBounds } from 'leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import icon2 from '../../assets/img/star_marker.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import { Container } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import SystemDetail from "./SytemDetail";
 import { useEffect, useState } from "react";
 import ISystemDetail from "../../interfaces/system-detail";
@@ -19,7 +19,7 @@ let DefaultIcon = L.icon({
 	//shadowUrl: iconShadow
   });
 L.Marker.prototype.options.icon = DefaultIcon;
-const bounds = new LatLngBounds([52, -163], [83,0])
+const bounds = new LatLngBounds([52, -153], [83,0])
 //	MyComponent is used for testing purposes of finding locations on custom map
 function MyComponent() {
 	const map = useMapEvent('click', (e) => {
@@ -40,39 +40,40 @@ export default function ThirdHorizonMap() {
 	}, [])
 
 	return (
-		<Container id="mapid">
-			<MapContainer center={[74, -83]} bounds={bounds} zoom={3} scrollWheelZoom={true}>				
-				<TileLayer url={process.env.PUBLIC_URL + "/assets/maptiles/{z}-{x}-{y}.jpg"}/>
-				<MyComponent></MyComponent>
-				{systems?.map((system, index) => 
-					<Marker 
-						key={`marker-${index}`} 
-						position={[system.lat_long.latitude, system.lat_long.longitude]}
-						eventHandlers={{
-							click: (e) => {
-								setSelectedSystem(system);
-							}
+		<>
+			<Container id="mapid">
+				<MapContainer center={[74, -83]} bounds={bounds} zoom={3} scrollWheelZoom={true}>				
+					<TileLayer url={process.env.PUBLIC_URL + "/assets/maptiles/{z}-{x}-{y}.jpg"}/>
+					<MyComponent></MyComponent>
+					{systems?.map((system, index) => 
+						<Marker 
+							key={`marker-${index}`} 
+							position={[system.lat_long.latitude, system.lat_long.longitude]}
+							eventHandlers={{
+								click: (e) => {
+									setSelectedSystem(system);
+								}
+							}}
+						>
+							<Popup>
+								<span>A pretty CSS3 popup. <br/> Easily customizable.</span>
+							</Popup>
+						</Marker>
+					)}							
+					<MapConsumer>
+						{(map) => {
+							map.setMaxZoom(5);
+							map.setMinZoom(3);
+							map.setMaxBounds(bounds)
+							return null;
 						}}
-					>
-						<Popup>
-							<span>A pretty CSS3 popup. <br/> Easily customizable.</span>
-						</Popup>
-					</Marker>
-				)}							
-				<MapConsumer>
-					{(map) => {
-						map.setMaxZoom(5);
-						map.setMinZoom(3);
-						map.setMaxBounds(bounds)
-						return null;
-					}}
-				</MapConsumer>				
-			</MapContainer>
+					</MapConsumer>				
+				</MapContainer>
+			</Container>
 			<Container>
 				<SystemDetail system={selectedSystem}></SystemDetail>
-			</Container>
-		</Container>
-
+			</Container>		
+		</>
 	)
 }
 

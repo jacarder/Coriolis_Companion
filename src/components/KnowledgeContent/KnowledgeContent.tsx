@@ -1,4 +1,4 @@
-import { Box, Fade, Typography } from '@mui/material';
+import { Box, Container, Fade, Typography } from '@mui/material';
 import React, { FC, useEffect, useState } from 'react';
 import { IKnowledgeItem } from '../../interfaces/knowledge-item';
 import KnowledgeCenterService from '../../services/KnowledgeCenterService';

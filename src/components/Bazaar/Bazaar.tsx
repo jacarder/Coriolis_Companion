@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FC, useContext, useEffect, useMemo, useState } from 'react';
 import BazaarService from '../../services/BazaarService';
 import './Bazaar.scss';
-import { Box, Button, Collapse, Grid, IconButton, Paper, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import { Box, Button, Collapse, Grid, IconButton, Paper, styled, Table, TableBody, TableCell, tableHeadClasses, tableCellClasses, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { BazaarCategories, BazaarCategory, IBazaarCategory } from '../../constants/BazaarCategory';
@@ -15,14 +15,19 @@ interface IRowProps {
   row: IBazaarItemDisplay
 }
 
+const StyledTableHead = styled(TableHead)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main
+}));
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: theme.palette.primary,
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14
-  },
+  }
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
@@ -145,12 +150,12 @@ return (
   !error ?   
     (
       <>
-        <Typography variant="h6">
+        <Typography color="white" variant="h6">
           {category?.title}
         </Typography>
         <TableContainer component={Paper}>
-          <Table sx={{borderRadius: '5px 5px 5px 5px'}}>
-            <TableHead>
+          <Table>
+            <StyledTableHead>
               <TableRow>
                 <StyledTableCell width="15%">Name</StyledTableCell>
                 <StyledTableCell width="5%">Cost</StyledTableCell>
@@ -160,7 +165,7 @@ return (
                 <StyledTableCell width="20%">Quantity</StyledTableCell>
                 <StyledTableCell width="5%"/>
               </TableRow>
-            </TableHead>
+            </StyledTableHead>
             <TableBody>
               {inventoryList}
             </TableBody>
