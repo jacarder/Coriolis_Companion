@@ -1,6 +1,7 @@
 import IRoute from "../interfaces/route";
 import BazaarPage from "../pages/Bazaar";
 import HomePage from "../pages/Home";
+import IconsPage from "../pages/Icons";
 import KnowledgeCenterPage from "../pages/KnowledgeCenter";
 import ToolsPage from "../pages/Tools";
 
@@ -28,7 +29,13 @@ const routes: IRoute[] = [
 		name: 'Knowledge Center Page',
 		component: KnowledgeCenterPage,
 		exact: true
-	}	
+	},
+	{
+		path: '/Icons',
+		name: 'Icons Page',
+		component: IconsPage,
+		exact: true
+	}
 ]
 
 export default routes;
