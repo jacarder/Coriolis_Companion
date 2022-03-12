@@ -1,0 +1,65 @@
+[
+	{
+		"id": 1,
+		"name": "The Messenger",
+		"otherNames": [],
+		"description": "The fleet-footed Messenger brings news, prayers, and omens to wherever the faithful might be. The Messenger is por- trayed as a pale boy with a stern face and flaming eyes. He is sometimes depicted holding a winged messenger rod, and in some places he himself is portrayed with wings, such as in the Hafra chapel on Algol, for example. He is sometimes called the Whisperer, the one who knows all your secrets, or the Seducer who drives people mad. Many view the Messenger as the Icon that escorts your ghost to the afterlife when your body dies, often as a host of sparrows or some other small birds. Sacrifices to the Messenger are often made when a message must be delivered or cargo secured, or together with intercessory prayer to bring someone good luck. A common sacrifice is the burning of a prayer written on a piece of paper or putting a small vessel carved out of sugar in the alcove of the Messenger in the temple. Woe to all who neglect the temperamental Messenger.",
+		"image": "messenger.jpg"
+	},
+	{
+		"id": 2,
+		"name": "The Dancer",
+		"otherNames": [],
+		"description": "The Dancer is the Icon of inspiration and perseverance. Sometimes woman, sometimes man, but most often androgynous and ungendered like the hijras. The Dancer represents the bond formed in the life union between two lovers, but also unbridled lust when appearing as the Musician, playing a nine-string lyre or a cirra. Darker folklore speaks of the Beast, representing mankind’s true nature and, according to some, her inherent evil. The Beast has no place in the temples, but some of Mira’s forest nomads worship it as the Icon of strength and portray it as a dragon-like creature with fur and nine eyes. Sacrifices to the Dancer are a small but exquisite meal, a dance, or a beautiful song, but preferably all three combined.",
+		"image": "dancer.jpg"
+	},
+	{
+		"id": 3,
+		"name": "The Gambler",
+		"otherNames": [],
+		"description": "For the adventurous, the intelligent, and the gifted, the Gambler is a perfect fit. Curious children who speak the truth as they see it and think quickly on their feet are the Icon’s protégées. The Icon is often pictured as a young man stretching his hand towards you, urging you to take a risk, to roll the dice. Myth and folklore across the Horizon usually describe the Gambler as a trickster, such as in the forms of the Laughing Hyena on Algol, King Macaque on Mira, or as juggling tarrab. The darker aspect of the Icon is surrounded by stories of monsters and the Dark between the Stars. On Mira, one incarnation of the Gambler is the Ensnarer who comes for the cowardly and the weak that are afraid to take risks in life. The Gambler appreciates simple offerings, such as dice, Gambler cards from an Icon deck, a mug of wine or some other kohôl. Lingering memories from the Long Night speak of goat blood sacrifices, and ever fouler things.",
+		"image": "gambler.jpg"
+	},
+	{
+		"id": 4,
+		"name": "The Deckhand",
+		"otherNames": [],
+		"description": "The Deckhand is usually portrayed as a tired boy holding a broom or a switch key. The Deckhand can bless homes, ships, and stores, if they’re well-kept and the right offerings have been made. The Deckhand protects the unfortunate as the folklore always depicts the Icon sharing their fate – tricked out of a well-earned reward. Some stories describe the Deckhand a bit differently, as a rascal that disturbs commerce, destroys electronics on ships, or makes sure the shelves in the shops are dusty and crooked. This aspect of the Deckhand is called the Waba, or the Fox. The best sacrifice to the Deckhand is a well-kept shop, balanced accounts, and meticulous service to one’s ship. In the chapels, a common offering is to wash the altar of the Icon and read a fairytale for the tired boy.",
+		"image": "deckhand.jpg"
+	},
+	{
+		"id": 5,
+		"name": "The Merchant",
+		"otherNames": [],
+		"description": "The portly Merchant, an older man dressed in embroidered silk robes, is the Icon of prosperity, forward thinking, and success. The kind and generous side of the Icon is often depicted as an elderly, smiling woman giving alms to the poor. She is revered by colonists who live off the land and plantation owners and farmers who pray for a good harvest. The darker side of the Merchant is the Miser who can be found in caricature form in many plays and holo dramas. The Miser has an insatiable lust for birr, precious stones, and power, and is oblivious to the consequences. Commonly, a sacrifice to the Merchant is birr (although sometimes gold leafed sugar birr) or fancy raw materials, delicacies or cut crystals.",
+		"image": "merchant.jpg"
+	},
+	{
+		"id": 6,
+		"name": "The Judge",
+		"otherNames": ["The Martyr"],
+		"description": "An old matriarch with a grave face and a sword at her side is the common way to picture the Judge. The Judge’s realm is that of justice and due punishment, hence the name. Early Icon myths name the Icon either as The Blind or the Warden, and many believe that it is the Judge who pre- sides over the afterlife, accompanied by the Gambler and holding a pair of scales. The famous mosaic in the Sarras temple on Menau depicts the Judge together with the hyena-headed Gambler who is trying to lead the ghosts of the dead astray. The Martyr is another aspect of the Judge and the most important Icon to the Order of the Pariah. The Martyr accepts unjust punishments, such as in the story “The Woes of Chigas” where the Martyr takes Chigas’ place when Kahaz, the monster of the deep, is coming to devour her. The only sacrifice the Judge desires is confession of one’s failings and lies, and remorseful penance. Flagellation in honor of the Martyr can be appropriate under certain circumstances, but is almost exclusively practiced by the Order.",
+		"image": "judge.jpg"
+	},
+	{
+		"id": 7,
+		"name": "The Traveler",
+		"otherNames": [],
+		"description": "For free traders, caravaneers, explorers or colonists, the Traveler stands for protection. The Traveler is often a man with his eyes on the horizon, holding a walking stick, a compass or maybe an astrograph. A Firstcome variation of the Traveler is the Star Singer, who is a spreader of wisdom and who anchors reality with song and story. Yet another aspect is the Demiurge worshipped on Menkar, believed to be the original portal creator. In this origin story, the Portal Builders never existed, but instead it was the Icons themselves who wove the network of gates between the Horizons. The malicious side of the Traveler is the Spider, who controls the web of star ways and traps reckless ship crews in the darkness between the portals. Offerings to the Traveler are usually a knotted hemp rope or crude string, a figurine of a ship, a dromedon, a horse or some other transportation craft.",
+		"image": "traveler.jpg"
+	},
+	{
+		"id": 8,
+		"name": "The Lady of Tears",
+		"otherNames": [],
+		"description": "On their way toward the Judge’s justice, the Lady of Tears accompanies the dead. She also consoles the ones still living. The Lady of Tears is a woman dressed in the white of mourning, traces of tears still on her cheeks, but with a mysterious smile. Her element is fire, the cleansing fire that destroys the body to set the spirit free. A dark aspect of the Lady is the Butcher or the Executioner, who cuts or hacks off body parts until nothing is left, but still leaves the ghost trapped. A less grim incarnation is the Lady of Tar, who covers the pyre and the corpse in pitch for a quick and intense fire. The Lady of Tears is praised with offerings of burning myrrh, white candles, or small fires – not inside the chapel, though.",
+		"image": "lady_of_tears.jpg"
+	},
+	{
+		"id": 9,
+		"name": "The Faceless",
+		"otherNames": [],
+		"description": "The Seeker among the Icons is never pictured. In temples and on Icon walls there is instead an empty place or alcove, or an asymmetry in the placement of the other Icons. Not so long ago, many did not even know of the existence of the Faceless One, but the rise of the Church of the Icons changed that. On stage, the Faceless One is portrayed as a masked figure all in black that sneaks about the set, rearranging the props and giving or taking away objects from the actors. The most common aspect of the Icon is the Shadow, although for a long time many thought of it as an evil spirit rather than an Icon. The Shadow brings madness by luring the soul out into the Dark between the Stars. The anonymity of the Faceless One makes for few sacrifices in its honor, except by those who have known and revered the Icon for a long time, such as the Black Lotuses of Ahlam’s Temple or the Karvor nomads in Aigi, Uharu. A proper offering is often a mask, black or white stones, or a drop of blood from the believer. Unsubstantiated but persistent rumors claim that certain unsavory cults on Mira and Dabaran worship a perverted aspect of the Faceless One with human sacrifices to quench the Icon’s thirst for souls.",
+		"image": "faceless.jpg"
+	}	
+]

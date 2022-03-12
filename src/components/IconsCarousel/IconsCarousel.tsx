@@ -1,17 +1,19 @@
-import { Grid } from '@mui/material';
-import React, { FC, MouseEventHandler, useEffect } from 'react';
+import { Button, Card, CardActions, CardContent, Container, Grid, Paper, Typography } from '@mui/material';
+import React, { FC, MouseEventHandler, useEffect, useState } from 'react';
+import { IIcon } from '../../interfaces/icon';
+import IconsService from '../../services/IconsService';
 import './IconsCarousel.scss';
 
 interface IconsCarouselProps {}
 
 const IconsCarousel: FC<IconsCarouselProps> = () => {
+  const [icon, setIcon] = useState<IIcon>()
   useEffect(() => {
     document.addEventListener('keydown', onKeyDown);
     moveToSelected()
   },[])
 
   const moveToSelected = () => {
-    let selectedElement = document.getElementsByClassName("selected")[0];
     let selected;
     const cardsContainer = document.querySelector(".card-carousel");
     const cardsController = document.querySelector(".card-carousel + .card-controller")
@@ -265,6 +267,12 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
             card.classList.remove("blur-2");
           }
         }
+        if(data.x == 0) {
+          let icon = document.querySelector("[data-x='0']");
+          if(icon) {
+            setIcon(IconsService.getIconData(+icon.id))
+          }
+        }
       }
       
       calcScale2(x: any) {
@@ -336,7 +344,7 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
               x: x,
               zIndex: Math.abs(Math.abs(+x) - this.centerIndex)
             })
-          }
+          }       
         }
     
         for (let i = 0; i < this.cards.length; i++) {
@@ -419,7 +427,28 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
           </div>
           <a href="#" className="visuallyhidden card-controller">Carousel controller</a>
         </div>
-      </Grid>      
+      </Grid>
+      <Grid item xs={12}>
+        {/** TODO move this to own component */}
+        <Container>
+          <Card>
+            <CardContent>
+              <Typography variant='h5' color="text.secondary" gutterBottom>
+                {icon?.name}
+              </Typography>
+              <Typography variant="body2">
+                <div>
+                  <b>Other Names:</b> 
+                  <ul>
+                    {icon?.otherNames.map((name, index) => <li key={`${name}-${index}`}>{name}</li>)}
+                  </ul>
+                  </div>
+                <div><b>Description:</b> <div>{icon?.description}</div></div>
+              </Typography>
+            </CardContent>
+          </Card>
+        </Container>
+      </Grid>     
     </Grid>
   );
 }
