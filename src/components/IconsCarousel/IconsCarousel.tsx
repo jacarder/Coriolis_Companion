@@ -268,10 +268,14 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
           }
         }
         if(data.x == 0) {
-          let icon = document.querySelector("[data-x='0']");
-          if(icon) {
-            setIcon(IconsService.getIconData(+icon.id))
-          }
+          //  TODO remove this timeout
+          setTimeout(() => {
+            let icon = document.querySelector("[data-x='0']");
+            console.log(icon)
+            if(icon) {
+              setIcon(IconsService.getIconData(+icon.id))
+            }
+          })
         }
       }
       
