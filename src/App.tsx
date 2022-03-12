@@ -15,7 +15,7 @@ const App = () => {
       <div className="stars"></div>
       <div className="twinkling"></div>
       <div className="clouds"></div>
-      <Container fixed sx={{zIndex: 10, position: 'relative'}}>
+      <Box sx={{zIndex: 10, position: 'relative'}}>
         <BrowserRouter basename="/Coriolis_Companion">
           <Header></Header>
           <Switch>
@@ -37,7 +37,7 @@ const App = () => {
             })}
           </Switch>
         </BrowserRouter>
-      </Container>
+      </Box>
     </>
   );
 }
