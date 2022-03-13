@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/Coriolis_Companion/static/css/main.b5e52933.chunk.css",
-    "main.js": "/Coriolis_Companion/static/js/main.9ceb8877.chunk.js",
-    "main.js.map": "/Coriolis_Companion/static/js/main.9ceb8877.chunk.js.map",
-    "runtime-main.js": "/Coriolis_Companion/static/js/runtime-main.45d3101b.js",
-    "runtime-main.js.map": "/Coriolis_Companion/static/js/runtime-main.45d3101b.js.map",
+    "main.js": "/Coriolis_Companion/static/js/main.a57982e1.chunk.js",
+    "main.js.map": "/Coriolis_Companion/static/js/main.a57982e1.chunk.js.map",
+    "runtime-main.js": "/Coriolis_Companion/static/js/runtime-main.e0b17e50.js",
+    "runtime-main.js.map": "/Coriolis_Companion/static/js/runtime-main.e0b17e50.js.map",
     "static/css/2.da98c186.chunk.css": "/Coriolis_Companion/static/css/2.da98c186.chunk.css",
-    "static/js/2.4f45e09e.chunk.js": "/Coriolis_Companion/static/js/2.4f45e09e.chunk.js",
-    "static/js/2.4f45e09e.chunk.js.map": "/Coriolis_Companion/static/js/2.4f45e09e.chunk.js.map",
-    "static/js/3.715241c7.chunk.js": "/Coriolis_Companion/static/js/3.715241c7.chunk.js",
-    "static/js/3.715241c7.chunk.js.map": "/Coriolis_Companion/static/js/3.715241c7.chunk.js.map",
+    "static/js/2.8f4f5735.chunk.js": "/Coriolis_Companion/static/js/2.8f4f5735.chunk.js",
+    "static/js/2.8f4f5735.chunk.js.map": "/Coriolis_Companion/static/js/2.8f4f5735.chunk.js.map",
+    "static/js/3.6d0137b9.chunk.js": "/Coriolis_Companion/static/js/3.6d0137b9.chunk.js",
+    "static/js/3.6d0137b9.chunk.js.map": "/Coriolis_Companion/static/js/3.6d0137b9.chunk.js.map",
     "index.html": "/Coriolis_Companion/index.html",
     "static/css/2.da98c186.chunk.css.map": "/Coriolis_Companion/static/css/2.da98c186.chunk.css.map",
     "static/css/main.b5e52933.chunk.css.map": "/Coriolis_Companion/static/css/main.b5e52933.chunk.css.map",
-    "static/js/2.4f45e09e.chunk.js.LICENSE.txt": "/Coriolis_Companion/static/js/2.4f45e09e.chunk.js.LICENSE.txt",
+    "static/js/2.8f4f5735.chunk.js.LICENSE.txt": "/Coriolis_Companion/static/js/2.8f4f5735.chunk.js.LICENSE.txt",
     "static/media/star_marker.0d2f81f4.png": "/Coriolis_Companion/static/media/star_marker.0d2f81f4.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.45d3101b.js",
+    "static/js/runtime-main.e0b17e50.js",
     "static/css/2.da98c186.chunk.css",
-    "static/js/2.4f45e09e.chunk.js",
+    "static/js/2.8f4f5735.chunk.js",
     "static/css/main.b5e52933.chunk.css",
-    "static/js/main.9ceb8877.chunk.js"
+    "static/js/main.a57982e1.chunk.js"
   ]
 }
