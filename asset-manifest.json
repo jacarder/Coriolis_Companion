@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Coriolis_Companion/static/css/main.b5e52933.chunk.css",
-    "main.js": "/Coriolis_Companion/static/js/main.a57982e1.chunk.js",
-    "main.js.map": "/Coriolis_Companion/static/js/main.a57982e1.chunk.js.map",
+    "main.js": "/Coriolis_Companion/static/js/main.1fe8b53d.chunk.js",
+    "main.js.map": "/Coriolis_Companion/static/js/main.1fe8b53d.chunk.js.map",
     "runtime-main.js": "/Coriolis_Companion/static/js/runtime-main.e0b17e50.js",
     "runtime-main.js.map": "/Coriolis_Companion/static/js/runtime-main.e0b17e50.js.map",
     "static/css/2.da98c186.chunk.css": "/Coriolis_Companion/static/css/2.da98c186.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.da98c186.chunk.css",
     "static/js/2.8f4f5735.chunk.js",
     "static/css/main.b5e52933.chunk.css",
-    "static/js/main.a57982e1.chunk.js"
+    "static/js/main.1fe8b53d.chunk.js"
   ]
 }
