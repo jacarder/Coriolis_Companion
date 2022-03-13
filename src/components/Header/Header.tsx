@@ -37,8 +37,8 @@ const Header = () => {
     setIsOpen(!isOpen)
   }
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1, marginBottom: 8}}>
+      <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Coriolis Companion
