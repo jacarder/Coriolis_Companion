@@ -8,31 +8,31 @@ import ToolsPage from "../pages/Tools";
 const routes: IRoute[] = [
 	{
 		path: '/',
-		name: 'Home Page',
+		name: 'Home',
 		component: HomePage,
 		exact: true
 	},
 	{
 		path: '/tools',
-		name: 'Tools Page',
+		name: 'Tools',
 		component: ToolsPage,
 		exact: true
 	},	
 	{
 		path: '/bazaar',
-		name: 'Bazaar Page',
+		name: 'Bazaar',
 		component: BazaarPage,
 		exact: true
 	},
 	{
 		path: '/knowledge-center',
-		name: 'Knowledge Center Page',
+		name: 'Knowledge Center',
 		component: KnowledgeCenterPage,
 		exact: true
 	},
 	{
 		path: '/Icons',
-		name: 'Icons Page',
+		name: 'Icons',
 		component: IconsPage,
 		exact: true
 	}
