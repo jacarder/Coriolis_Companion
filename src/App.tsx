@@ -16,7 +16,7 @@ const App = () => {
       <div className="twinkling"></div>
       <div className="clouds"></div>
       <Box sx={{zIndex: 10, position: 'relative'}}>
-        <BrowserRouter basename="/Coriolis_Companion">
+        <BrowserRouter>
           <Header></Header>
           <Switch>
             {routes.map((route, index) => {
