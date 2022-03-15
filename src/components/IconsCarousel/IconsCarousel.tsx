@@ -35,7 +35,7 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
           handler(null)
         }
       })
-      
+      /* Doesn't work well TODO remove or optimize
       this.target?.addEventListener("touchstart", e => {
         handler = callback(e)
         
@@ -52,6 +52,7 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
           handler(null)
         }
       })
+      */
     }
     
     // Get the distance that the user has dragged
