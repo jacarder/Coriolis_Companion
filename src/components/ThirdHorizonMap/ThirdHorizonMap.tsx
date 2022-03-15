@@ -41,6 +41,9 @@ export default function ThirdHorizonMap() {
 
 	return (
 		<>
+			<Container>
+				<SystemDetail system={selectedSystem}></SystemDetail>
+			</Container>
 			<Container id="mapid">
 				<MapContainer center={[74, -83]} bounds={bounds} zoom={3} scrollWheelZoom={true}>				
 					<TileLayer url={process.env.PUBLIC_URL + "/assets/maptiles/{z}-{x}-{y}.jpg"}/>
@@ -69,9 +72,6 @@ export default function ThirdHorizonMap() {
 						}}
 					</MapConsumer>				
 				</MapContainer>
-			</Container>
-			<Container>
-				<SystemDetail system={selectedSystem}></SystemDetail>
 			</Container>		
 		</>
 	)
