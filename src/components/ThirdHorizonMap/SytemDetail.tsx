@@ -12,22 +12,22 @@ export default function SystemDetail(props: SystemDetailProps) {
 		setSystemDetails(props.system);
 	}, [props.system])
 	return (
-		<Card sx={{ minWidth: 275 }}>
-		<CardContent>
-		  <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-			System Information
-		  </Typography>
-		  <Typography component={'span'} variant="body2">
-			<Grid container spacing={12}>
-				<Grid item xs={6}>
-					Name: {systemDetails?.name}
-				</Grid>
-				<Grid item xs={6}>
-					Planet Count: {systemDetails?.planetCount}
-				</Grid>
-			</Grid>		  
-		  </Typography>
-		</CardContent>
-	  </Card>
+		<Card>
+			<CardContent>
+			<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+				System Information
+			</Typography>
+			<Typography component={'span'} variant="body2">
+				<Grid container spacing={12}>
+					<Grid item xs={6}>
+						Name: {systemDetails?.name}
+					</Grid>
+					<Grid item xs={6}>
+						Planet Count: {systemDetails?.planetCount}
+					</Grid>
+				</Grid>		  
+			</Typography>
+			</CardContent>
+		</Card>
 	)
 }

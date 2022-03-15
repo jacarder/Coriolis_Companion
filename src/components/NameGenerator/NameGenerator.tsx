@@ -21,18 +21,18 @@ export default function NameGenerator() {
   }  
 
   return (
-    <Card sx={{ minWidth: 275 }}>
-    <CardContent>
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Generated Name
-      </Typography>
-      <Typography variant="body2">
-        {generatedName}
-      </Typography>
-    </CardContent>
-    <CardActions>
-      <Button variant="contained" onClick={handleGetName}>Generate Name</Button>
-    </CardActions>
-  </Card>
+    <Card sx={{height: '100%'}}>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Generated Name
+        </Typography>
+        <Typography variant="body2">
+          {generatedName}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button variant="contained" onClick={handleGetName}>Generate Name</Button>
+      </CardActions>
+    </Card>
   )
 }

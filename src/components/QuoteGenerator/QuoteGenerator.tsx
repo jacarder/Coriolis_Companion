@@ -19,7 +19,7 @@ export default function QuoteGenerator(props: QuoteGeneratorProps) {
   }
 
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{height: '100%'}}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Quote of the Day
