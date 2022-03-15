@@ -21,7 +21,7 @@ export default function NameGenerator() {
   }  
 
   return (
-    <Card sx={{height: '100%'}}>
+    <Card sx={{height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start'}}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Generated Name
