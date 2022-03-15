@@ -15,7 +15,11 @@ export default function QuoteGenerator(props: QuoteGeneratorProps) {
   }, [])
 
   const handleGetQuote = () => {
-    setRandomQuote(ApiService.getRandomQuote());
+    let quote = randomQuote;
+    while (randomQuote === quote) {
+      quote = ApiService.getRandomQuote();
+    }
+    setRandomQuote(quote);
   }
 
   return (
