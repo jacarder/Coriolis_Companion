@@ -2,6 +2,6 @@
 
 WIP. Coriolis Third Horizon Companion App.
 
-Try it out -> [Github Pages Integration](https://jacarder.github.io/Coriolis_Companion)
+Try it out -> [Hosted on Vercel](https://coriolis-companion.vercel.app/)
 
 
