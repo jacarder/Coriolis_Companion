@@ -22,7 +22,7 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
         
         window.addEventListener("mousemove", handler)
         
-        //document.addEventListener("mouseleave", clearDraggingEvent)
+        document.addEventListener("mouseleave", clearDraggingEvent)
         
         window.addEventListener("mouseup", clearDraggingEvent)
         
@@ -30,7 +30,7 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
           window.removeEventListener("mousemove", handler)
           window.removeEventListener("mouseup", clearDraggingEvent)
         
-          //document.removeEventListener("mouseleave", clearDraggingEvent)
+          document.removeEventListener("mouseleave", clearDraggingEvent)
           
           handler(null)
         }
