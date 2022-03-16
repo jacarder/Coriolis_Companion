@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Grid, TextField, Typography } from '@mui/material';
-import React, { ChangeEvent, FC, useContext, useEffect, useState } from 'react';
+import React, { ChangeEvent, FC, useContext, useEffect, useState, FocusEvent } from 'react';
 import { CartContext } from '../../config/cart-context';
 import { IBazaarCartItem } from '../../interfaces/bazaar-item';
 import './BazaarCart.scss';
@@ -34,13 +34,20 @@ const BazaarCart: FC<BazaarCartProps> = () => {
   }, [cart]);
 
   const handleChangeQuantity = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, itemId: number) => {
+    updateCart(itemId, +e.target.value);
+  }
+  const handleOnBlurQuantity = (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>, itemId: number) => {
+    
+    updateCart(itemId, +e.target.value, true);
+  }
+  const updateCart = (itemId: number, value: number, onBlurEvent: boolean = false) => {
     let existingItem = cart.filter((item) => item.id === itemId)[0];
-    if(existingItem) {
-      existingItem.quantity = +e.target.value;
+    if(existingItem && value >= 0) {
+      existingItem.quantity = value;
       let newCart: IBazaarCartItem[] = [];
-      if(existingItem.quantity <= 0) {
+      if(onBlurEvent && existingItem.quantity === 0) {
         //  Remove item from cart
-        newCart = cart.filter((item) => item.id !== itemId);
+        newCart = cart.filter((item) => item.id !== existingItem.id);
       } else {
         cart.forEach((item) => {
           if(item.id === existingItem.id) {
@@ -51,10 +58,9 @@ const BazaarCart: FC<BazaarCartProps> = () => {
             newCart.push(item);
           }
         })
-        
       }
       setCart(newCart)
-    }
+    }    
   }
   const gridFlexAlign = {
     display: 'flex',
@@ -83,6 +89,7 @@ const BazaarCart: FC<BazaarCartProps> = () => {
                   margin='dense'
                   sx={{ml: 1}}
                   onChange={(e) => handleChangeQuantity(e, item.itemId)}
+                  onBlur={(e) => handleOnBlurQuantity(e, item.itemId)}
                 />
               </Box>
             </Grid>        
