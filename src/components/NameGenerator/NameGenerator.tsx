@@ -4,24 +4,24 @@ import IGeneratedPerson from '../../interfaces/generated-person';
 import GeneratePersonService from '../../services/GeneratePersonService';
 import './NameGenerator.scss';
 
-export default function NameGenerator() {
+const NameGenerator = () => {
 
   const [generatedName, setGeneratedName] = useState<string>('')
 
   useEffect(() => {
-		GeneratePersonService.getNames("m").then((person: IGeneratedPerson) => {
-			setGeneratedName(`${person.firstName} ${person.lastName}`);
-		});
+    GeneratePersonService.getNames("m").then((person: IGeneratedPerson) => {
+      setGeneratedName(`${person.firstName} ${person.lastName}`);
+    });
   }, [])
 
   const handleGetName = () => {
     GeneratePersonService.getNames("m").then((person: IGeneratedPerson) => {
-			setGeneratedName(`${person.firstName} ${person.lastName}`);
-		});
-  }  
+      setGeneratedName(`${person.firstName} ${person.lastName}`);
+    });
+  }
 
   return (
-    <Card sx={{height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start' }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Generated Name
@@ -36,3 +36,4 @@ export default function NameGenerator() {
     </Card>
   )
 }
+export default NameGenerator;

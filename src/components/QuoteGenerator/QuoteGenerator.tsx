@@ -7,8 +7,8 @@ interface QuoteGeneratorProps {
   color?: string
 }
 
-export default function QuoteGenerator(props: QuoteGeneratorProps) {
-  const [randomQuote, setRandomQuote] = useState<string|undefined>('')
+const QuoteGenerator = (props: QuoteGeneratorProps) => {
+  const [randomQuote, setRandomQuote] = useState<string | undefined>('')
 
   useEffect(() => {
     setRandomQuote(ApiService.getRandomQuote());
@@ -23,7 +23,7 @@ export default function QuoteGenerator(props: QuoteGeneratorProps) {
   }
 
   return (
-    <Card sx={{height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start' }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Quote of the Day
@@ -38,3 +38,4 @@ export default function QuoteGenerator(props: QuoteGeneratorProps) {
     </Card>
   )
 }
+export default QuoteGenerator;
