@@ -167,7 +167,7 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
         }
       }
 
-      if (e.keyCode == 37) {
+      if (e.keyCode === 37) {
         // Right arrow
         for (let x in this.xScale) {
           const newX = (parseInt(x) + 1 > this.centerIndex) ? -this.centerIndex : parseInt(x) + 1;
@@ -214,14 +214,14 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
 
     updateCards(card: any, data: any) {
       if (card) {
-        if (data.x || data.x == 0) {
+        if (data.x || data.x === 0) {
           card.setAttribute("data-x", data.x)
         }
 
-        if (data.scale || data.scale == 0) {
+        if (data.scale || data.scale === 0) {
           card.style.transform = `scale(${data.scale})`
 
-          if (data.scale == 0) {
+          if (data.scale === 0) {
             card.style.opacity = data.scale
           } else {
             card.style.opacity = 1;
@@ -232,8 +232,8 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
           card.style.left = `${data.leftPos}%`
         }
 
-        if (data.zIndex || data.zIndex == 0) {
-          if (data.zIndex == 0) {
+        if (data.zIndex || data.zIndex === 0) {
+          if (data.zIndex === 0) {
             card.classList.add("highlight")
           } else {
             card.classList.remove("highlight")
@@ -243,10 +243,10 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
         }
         // Add blur to other cards
         /*
-        if(card.style.zIndex == -1 || card.style.zIndex == -2) {
-          if(card.style.zIndex == "-1") {
+        if(card.style.zIndex === -1 || card.style.zIndex === -2) {
+          if(card.style.zIndex === "-1") {
             card.classList.add("blur-1");
-          } else if(card.style.zIndex == "-2") {
+          } else if(card.style.zIndex === "-2") {
             card.classList.add("blur-2");
           } 
         } else {
@@ -255,7 +255,7 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
         }
         */
       }
-      if (data.x == 0) {
+      if (data.x === 0) {
         //  TODO remove this timeout
         setTimeout(() => {
           let icon = document.querySelector("[data-x='0']");
