@@ -48,9 +48,9 @@ const ThirdHorizonMap = () => {
 				<MapContainer center={[74, -83]} bounds={bounds} zoom={3} scrollWheelZoom={true}>
 					<TileLayer url={process.env.PUBLIC_URL + "/assets/maptiles/{z}-{x}-{y}.jpg"} />
 					<MyComponent></MyComponent>
-					{systems?.map((system, index) =>
+					{systems?.map((system) =>
 						<Marker
-							key={`marker-${index}`}
+							key={`marker-${system.id}`}
 							position={[system.lat_long.latitude, system.lat_long.longitude]}
 							eventHandlers={{
 								click: (e) => {
