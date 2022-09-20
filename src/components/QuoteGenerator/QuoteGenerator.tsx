@@ -1,6 +1,6 @@
-import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CircularProgress, Typography } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
-import ApiService from '../../services/GeneratePersonService';
+import ApiService from '../../services/GeneratePerson.service';
 import './QuoteGenerator.scss';
 
 interface QuoteGeneratorProps {
@@ -9,17 +9,23 @@ interface QuoteGeneratorProps {
 
 const QuoteGenerator = (props: QuoteGeneratorProps) => {
   const [randomQuote, setRandomQuote] = useState<string | undefined>('')
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setRandomQuote(ApiService.getRandomQuote());
+
+    const getQuote = async () => {
+      const quote = await ApiService.getRandomQuote();
+      setRandomQuote(quote);
+      setIsLoading(false);
+    }
+    getQuote();
   }, [])
 
-  const handleGetQuote = () => {
-    let quote = randomQuote;
-    while (randomQuote === quote) {
-      quote = ApiService.getRandomQuote();
-    }
+  const handleGetQuote = async () => {
+    setIsLoading(true);
+    const quote = await ApiService.getRandomQuote();
     setRandomQuote(quote);
+    setIsLoading(false);
   }
 
   return (
@@ -29,7 +35,9 @@ const QuoteGenerator = (props: QuoteGeneratorProps) => {
           Quote of the Day
         </Typography>
         <Typography variant="body2">
-          {randomQuote}
+          {
+            isLoading ? <CircularProgress sx={{ position: 'absolute' }} size={20} /> : <>{randomQuote}</>
+          }
         </Typography>
       </CardContent>
       <CardActions>

@@ -1,4 +1,6 @@
+import { OPENAI_COMMAND } from "../constants/OpenAI";
 import IGeneratedPerson from "../interfaces/generated-person";
+import { CreateText } from "./OpenAI.service";
 
 //const BASE_API_URL = `https://api.parser.name/?api_key=e59ae224c978620463a78afb1a2a386e&endpoint=generate&`;
 const BASE_API_URL = `https://randomuser.me/api/`;
@@ -21,15 +23,9 @@ class GeneratePersonService {
 		});
 	}
 
-	getRandomQuote = (): string => {
-		//	TODO api to get random qoute
-		const qouteList = [
-			"That which cannot be seen follows you.",
-			"Arrash... please!",
-			"This isn't any ordinary accelerator pistol."
-		  ];
-		  
-		return qouteList[Math.floor(Math.random()*qouteList.length)];
+	getRandomQuote = async (): Promise<string> => {
+		const { data: { choices } } = await CreateText(OPENAI_COMMAND.CREATE_QUOTE);
+		return choices?.length === 1 ? (choices[0].text ?? '') : 'Kamra, we are doomed';;
 	}
 }
 
