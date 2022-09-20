@@ -1,7 +1,7 @@
 import { Configuration, OpenAIApi, CreateCompletionRequest } from 'openai';
 import { OPENAI_COMMAND } from '../constants/OpenAI';
 const config = new Configuration({
-	apiKey: process.env.OpenAIKey
+	apiKey: process.env.REACT_APP_OPENAI_KEY
 })
 const openAI = new OpenAIApi(config);
 
