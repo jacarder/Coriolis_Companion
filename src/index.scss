@@ -1,57 +1,68 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: white;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+		"Droid Sans", "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: white;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 // Welcome Font
 .welcome-font {
-	font-family: 'Merienda One', cursive !important;
+	font-family: "Merienda One", cursive !important;
 }
 
 // Background
-.stars, .twinkling, .clouds {
-	position:absolute;
-	display:block;
-	top:0; bottom:0;
-	left:0; right:0;
-	width:100%; height:100%;
+.stars,
+.twinkling,
+.clouds {
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
 }
 
 .stars {
 	z-index: 0;
-	background: #000 url('https://image.ibb.co/mjnygo/stars.png') repeat top center;
-  	animation: move-twink-back 1500s linear infinite;
+	background: #000 url("./assets/img/stars.png") repeat top center;
+	animation: move-twink-back 1500s linear infinite;
 }
 
-.twinkling{
+.twinkling {
 	z-index: 1;
-	background:transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
+	background: transparent url("./assets/img/twinkling.png") repeat top center;
 	animation: move-twink-back 500s linear infinite;
 }
 
-.clouds{
+.clouds {
 	z-index: 2;
-    background:transparent url('https://image.ibb.co/bT4N7T/clouds.png') repeat top center;
-	animation: move-clouds-back 300s linear infinite;
-  filter: sepia() saturate(10000%) hue-rotate(60deg) blur(1.5rem)
+	background: transparent url("./assets/img/clouds_repeat.png") repeat top center;
+	animation: move-clouds-back 1000s linear infinite;
+	filter: sepia(100) hue-rotate(0deg);
 }
 
 @keyframes move-twink-back {
-	from {background-position:0 0;}
-	to {background-position:-10000px 5000px;}
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: -10000px 5000px;
+	}
 }
 
 @keyframes move-clouds-back {
-	from {background-position:0 0;}
-	to {background-position:10000px 0;}
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 10000px 0;
+	}
 }
