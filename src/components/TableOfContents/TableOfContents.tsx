@@ -4,13 +4,13 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import './TableOfContents.scss';
 import { TreeItem, TreeView } from '@mui/lab';
 import { IKnowledgeTreeItem } from '../../interfaces/knowledge-tree';
-import KnowledgeCenterService from '../../services/KnowledgeCenterService';
+import KnowledgeCenterService from '../../services/KnowledgeCenter.service';
 
 interface TableOfContentsProps {
   selectSection: (selectedDataId: number) => void
 }
 
-const TableOfContents: FC<TableOfContentsProps> = ({selectSection}) => {
+const TableOfContents: FC<TableOfContentsProps> = ({ selectSection }) => {
   const [tree, setTree] = useState<IKnowledgeTreeItem[]>();
   useEffect(() => {
     setTree(KnowledgeCenterService.getTableOfContents());
@@ -22,8 +22,8 @@ const TableOfContents: FC<TableOfContentsProps> = ({selectSection}) => {
   const createTree = (item: IKnowledgeTreeItem) => {
     return (
       <TreeItem key={item.id} nodeId={item.id} label={item.name}>
-        {item.children 
-          ? item.children.map((childItem) =>createTree(childItem)) 
+        {item.children
+          ? item.children.map((childItem) => createTree(childItem))
           : null}
       </TreeItem>
     )

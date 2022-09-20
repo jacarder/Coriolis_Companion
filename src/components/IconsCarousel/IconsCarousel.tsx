@@ -1,7 +1,7 @@
 import { Button, Card, CardActions, CardContent, Container, Grid, Paper, Typography } from '@mui/material';
 import React, { FC, MouseEventHandler, useEffect, useState } from 'react';
 import { IIcon } from '../../interfaces/icon';
-import IconsService from '../../services/IconsService';
+import IconsService from '../../services/Icons.service';
 import './IconsCarousel.scss';
 interface IconsCarouselProps { }
 

@@ -1,7 +1,7 @@
 import { Card, CardContent, Typography, CardActions, Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import IGeneratedPerson from '../../interfaces/generated-person';
-import GeneratePersonService from '../../services/GeneratePersonService';
+import GeneratePersonService from '../../services/GeneratePerson.service';
 import './NameGenerator.scss';
 
 const NameGenerator = () => {

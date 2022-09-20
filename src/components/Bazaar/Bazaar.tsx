@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC, useContext, useEffect, useMemo, useState } from 'react';
-import BazaarService from '../../services/BazaarService';
+import BazaarService from '../../services/Bazaar.service';
 import './Bazaar.scss';
 import { Box, Button, Collapse, Grid, IconButton, Paper, styled, Table, TableBody, TableCell, tableHeadClasses, tableCellClasses, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -20,7 +20,7 @@ const StyledTableHead = styled(TableHead)(({ theme }) => ({
 }));
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  
+
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.primary,
     color: theme.palette.common.white,
@@ -45,7 +45,7 @@ const Bazaar: FC<IBazaarProps> = (props) => {
   const [bazaarInventory, setBazaarInventory] = useState<IBazaarItemDisplay[]>([]);
   const [error, setError] = useState<string>('');
   useEffect(() => {
-    if(category) {
+    if (category) {
       setBazaarInventory(BazaarService.getBazaarInventory(category.id));
     } else {
       setError('Error: Category does not exist.');
@@ -53,15 +53,15 @@ const Bazaar: FC<IBazaarProps> = (props) => {
   }, []);
 
   const Row = (props: IRowProps) => {
-    const {row} = props;
+    const { row } = props;
     const [open, setOpen] = useState(false);
     const [quantity, setQuantity] = useState(0);
-    const {cart, setCart} = useContext(CartContext);
+    const { cart, setCart } = useContext(CartContext);
     const renderBonusEffects = (effects: string[]) => {
       effects = effects || [];
       return (
-        <ul> 
-          {effects.map((effect) => 
+        <ul>
+          {effects.map((effect) =>
             <li key={effect}>
               {effect}
             </li>
@@ -74,7 +74,7 @@ const Bazaar: FC<IBazaarProps> = (props) => {
         quantity: quantity,
         total: 0
       } as IBazaarCartItem
-      const cartItem: IBazaarCartItem = {...item, ...quantityTotal};
+      const cartItem: IBazaarCartItem = { ...item, ...quantityTotal };
       let newCart = [...cart, cartItem];
       //  TODO setting context rerendors page    
       setCart(newCart);
@@ -87,11 +87,11 @@ const Bazaar: FC<IBazaarProps> = (props) => {
       display: "flex",
       alignContent: "center",
       justifyContent: "center",
-      alignItems: "center"      
+      alignItems: "center"
     }
     return (
       <>
-        <StyledTableRow>         
+        <StyledTableRow>
           <StyledTableCell>{row.name}</StyledTableCell>
           <StyledTableCell>{row.cost}</StyledTableCell>
           <StyledTableCell>{renderBonusEffects(row.bonusEffects)}</StyledTableCell>
@@ -125,7 +125,7 @@ const Bazaar: FC<IBazaarProps> = (props) => {
             >
               {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </IconButton>
-          </StyledTableCell>           
+          </StyledTableCell>
         </StyledTableRow>
         <StyledTableRow>
           <StyledTableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -138,44 +138,44 @@ const Bazaar: FC<IBazaarProps> = (props) => {
               </Box>
             </Collapse>
           </StyledTableCell>
-        </StyledTableRow>    
+        </StyledTableRow>
       </>
     )
   }
 
-const inventoryList = useMemo(() => bazaarInventory.map((item) => (
-  <Row key={item.id} row={item}></Row>
-)), [bazaarInventory])
-return (
-  !error ?   
-    (
-      <>
-        <Typography color="white" variant="h6">
-          {category?.title}
-        </Typography>
-        <TableContainer component={Paper}>
-          <Table>
-            <StyledTableHead>
-              <TableRow>
-                <StyledTableCell width="15%">Name</StyledTableCell>
-                <StyledTableCell width="5%">Cost</StyledTableCell>
-                <StyledTableCell width="40%">Bonus Effects</StyledTableCell>
-                <StyledTableCell width="5%">Weight</StyledTableCell>
-                <StyledTableCell width="10%">Tech Tier</StyledTableCell>
-                <StyledTableCell width="20%">Quantity</StyledTableCell>
-                <StyledTableCell width="5%"/>
-              </TableRow>
-            </StyledTableHead>
-            <TableBody>
-              {inventoryList}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </>
-    ) : (
-      // TODO create error component
-      <div>{error}</div>
-    )
+  const inventoryList = useMemo(() => bazaarInventory.map((item) => (
+    <Row key={item.id} row={item}></Row>
+  )), [bazaarInventory])
+  return (
+    !error ?
+      (
+        <>
+          <Typography color="white" variant="h6">
+            {category?.title}
+          </Typography>
+          <TableContainer component={Paper}>
+            <Table>
+              <StyledTableHead>
+                <TableRow>
+                  <StyledTableCell width="15%">Name</StyledTableCell>
+                  <StyledTableCell width="5%">Cost</StyledTableCell>
+                  <StyledTableCell width="40%">Bonus Effects</StyledTableCell>
+                  <StyledTableCell width="5%">Weight</StyledTableCell>
+                  <StyledTableCell width="10%">Tech Tier</StyledTableCell>
+                  <StyledTableCell width="20%">Quantity</StyledTableCell>
+                  <StyledTableCell width="5%" />
+                </TableRow>
+              </StyledTableHead>
+              <TableBody>
+                {inventoryList}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </>
+      ) : (
+        // TODO create error component
+        <div>{error}</div>
+      )
   )
 };
 

@@ -9,7 +9,7 @@ import { Box, Container, Grid } from "@mui/material";
 import SystemDetail from "./SystemDetail";
 import { useEffect, useState } from "react";
 import ISystemDetail from "../../interfaces/system-detail";
-import ThirdHorizonMapService from "../../services/ThirdHorizonMapService";
+import ThirdHorizonMapService from "../../services/ThirdHorizonMap.service";
 
 let DefaultIcon = L.icon({
 	iconSize: [15, 15],
