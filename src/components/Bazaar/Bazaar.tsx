@@ -1,12 +1,12 @@
-import React, { ChangeEvent, FC, useContext, useEffect, useMemo, useState } from 'react';
+import React, { ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
 import BazaarService from '../../services/Bazaar.service';
 import './Bazaar.scss';
-import { Box, Button, Collapse, Grid, IconButton, Paper, styled, Table, TableBody, TableCell, tableHeadClasses, tableCellClasses, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import { Box, Button, Collapse, Grid, IconButton, Paper, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { BazaarCategories, BazaarCategory, IBazaarCategory } from '../../constants/BazaarCategory';
-import { CartContext } from '../../config/cart-context';
 import { IBazaarCartItem, IBazaarItemDisplay } from '../../interfaces/bazaar-item';
+import useMarketStore from '../../store/MarketStore';
 
 interface IBazaarProps {
   categoryId: BazaarCategory
@@ -56,7 +56,7 @@ const Bazaar: FC<IBazaarProps> = (props) => {
     const { row } = props;
     const [open, setOpen] = useState(false);
     const [quantity, setQuantity] = useState(0);
-    const { cart, setCart } = useContext(CartContext);
+    const { cart, setCart } = useMarketStore();
     const renderBonusEffects = (effects: string[]) => {
       effects = effects || [];
       return (

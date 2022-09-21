@@ -1,9 +1,9 @@
 import { Box, Button, Divider, Grid, TextField, Typography } from '@mui/material';
-import React, { ChangeEvent, FC, useContext, useEffect, useState, FocusEvent } from 'react';
-import { CartContext } from '../../config/cart-context';
+import { ChangeEvent, FC, useEffect, useState, FocusEvent } from 'react';
 import { IBazaarCartItem } from '../../interfaces/bazaar-item';
+import useMarketStore from '../../store/MarketStore';
 import './BazaarCart.scss';
-interface BazaarCartProps {}
+interface BazaarCartProps { }
 interface ICart {
   itemId: number,
   quantity: number,
@@ -13,12 +13,12 @@ interface ICart {
 
 const BazaarCart: FC<BazaarCartProps> = () => {
   const [cartFormat, setCartFormat] = useState<ICart[]>([]);
-  const {cart, setCart} = useContext(CartContext)
+  const { cart, setCart } = useMarketStore();
   useEffect(() => {
     let newCartFormat: ICart[] = [];
     cart.forEach((item) => {
       const t = newCartFormat.find((quantItem) => quantItem.itemId === item.id);
-      if(!t) {
+      if (!t) {
         const itemsInCart = cart.filter((quantItem) => quantItem.id === item.id);
         const totalQuantity = itemsInCart.map((item) => item.quantity).reduce((a, b) => a + b);
         const totalCost = item.cost * totalQuantity;
@@ -37,21 +37,21 @@ const BazaarCart: FC<BazaarCartProps> = () => {
     updateCart(itemId, +e.target.value);
   }
   const handleOnBlurQuantity = (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>, itemId: number) => {
-    
+
     updateCart(itemId, +e.target.value, true);
   }
   const updateCart = (itemId: number, value: number, onBlurEvent: boolean = false) => {
     let existingItem = cart.filter((item) => item.id === itemId)[0];
-    if(existingItem && value >= 0) {
+    if (existingItem && value >= 0) {
       existingItem.quantity = value;
       let newCart: IBazaarCartItem[] = [];
-      if(onBlurEvent && existingItem.quantity === 0) {
+      if (onBlurEvent && existingItem.quantity === 0) {
         //  Remove item from cart
         newCart = cart.filter((item) => item.id !== existingItem.id);
       } else {
         cart.forEach((item) => {
-          if(item.id === existingItem.id) {
-            if(newCart.filter((cartItem) => cartItem.id === existingItem.id).length < 1) {
+          if (item.id === existingItem.id) {
+            if (newCart.filter((cartItem) => cartItem.id === existingItem.id).length < 1) {
               newCart.push(existingItem);
             }
           } else {
@@ -60,7 +60,7 @@ const BazaarCart: FC<BazaarCartProps> = () => {
         })
       }
       setCart(newCart)
-    }    
+    }
   }
   const gridFlexAlign = {
     display: 'flex',
@@ -69,7 +69,7 @@ const BazaarCart: FC<BazaarCartProps> = () => {
   return (
     <>
       <Typography variant="body2" gutterBottom component={'div'}>
-        {cartFormat.map(item => 
+        {cartFormat.map(item =>
           <Grid key={item.itemId} container spacing={1} style={gridFlexAlign}>
             <Grid item xs={6}>
               {item.itemName}
@@ -87,25 +87,25 @@ const BazaarCart: FC<BazaarCartProps> = () => {
                   }}
                   variant="standard"
                   margin='dense'
-                  sx={{ml: 1}}
+                  sx={{ ml: 1 }}
                   onChange={(e) => handleChangeQuantity(e, item.itemId)}
                   onBlur={(e) => handleOnBlurQuantity(e, item.itemId)}
                 />
               </Box>
-            </Grid>        
+            </Grid>
             <Grid item xs={3}>
               <Box display="flex" justifyContent="flex-end">
                 {item.total}
               </Box>
-            </Grid>            
+            </Grid>
           </Grid>
-        )}        
+        )}
       </Typography>
       <Typography variant="h6">
-        <Divider/>
+        <Divider />
         <Grid container spacing={1}>
           <Grid item xs={6}>
-              Total:
+            Total:
           </Grid>
           <Grid item xs={6}>
             <Box display="flex" justifyContent="flex-end">
@@ -113,7 +113,7 @@ const BazaarCart: FC<BazaarCartProps> = () => {
             </Box>
           </Grid>
         </Grid>
-      </Typography>      
+      </Typography>
       <Button fullWidth variant="contained" color="secondary">Checkout</Button>
     </>
   )
