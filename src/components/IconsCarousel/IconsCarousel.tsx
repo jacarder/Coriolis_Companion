@@ -2,6 +2,7 @@ import { Button, Card, CardActions, CardContent, Container, Grid, Paper, Typogra
 import React, { FC, MouseEventHandler, useEffect, useState } from 'react';
 import { IIcon } from '../../interfaces/icon';
 import IconsService from '../../services/Icons.service';
+import IconInfoCard from '../IconInfoCard/IconInfoCard';
 import './IconsCarousel.scss';
 interface IconsCarouselProps { }
 
@@ -254,15 +255,10 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
           card.classList.remove("blur-2");
         }
         */
-      }
-      if (data.x === 0) {
-        //  TODO remove this timeout
-        setTimeout(() => {
-          let icon = document.querySelector("[data-x='0']");
-          if (icon) {
-            setIcon(IconsService.getIconData(+icon.id))
-          }
-        })
+        const iconsSelector = document.querySelector("[data-x='0']");
+        if (iconsSelector) {
+          setIconId(+iconsSelector?.id)
+        }
       }
     }
 
@@ -350,19 +346,14 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
     }
   }
   const [carousel, setCarousel] = useState<CardCarousel>();
-  const [icon, setIcon] = useState<IIcon>()
+  const [iconId, setIconId] = useState<number | null>()
   useEffect(() => {
     document.addEventListener('keydown', onKeyDown);
     moveToSelected()
   }, [])
 
   const moveToSelected = () => {
-    let selected;
     const cardsContainer = document.querySelector(".card-carousel");
-    const cardsController = document.querySelector(".card-carousel + .card-controller")
-
-
-
     const carousel = new CardCarousel(cardsContainer)
     setCarousel(carousel);
   }
@@ -385,13 +376,11 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
   const handlePrevClick = () => {
     carousel?.moveCards({ x: 150, y: 0 })
     carousel?.moveCards(null)
-    //moveToSelected('prev')
   }
 
   const handleNextClick = () => {
     carousel?.moveCards({ x: -150, y: 0 })
     carousel?.moveCards(null)
-    //moveToSelected('next')
   }
 
   return (
@@ -445,24 +434,8 @@ const IconsCarousel: FC<IconsCarouselProps> = () => {
         <Button variant="contained" color="secondary" onClick={handleNextClick}>NEXT</Button>
       </Grid>
       <Grid item xs={12}>
-        {/** TODO move this to own component */}
         <Container>
-          <Card>
-            <CardContent>
-              <Typography variant='h5' color="text.secondary" gutterBottom>
-                {icon?.name}
-              </Typography>
-              <Typography component={'span'} variant="body2">
-                <div>
-                  <b>Other Names:</b>
-                  <ul>
-                    {icon?.otherNames.map((name, index) => <li key={`${name}-${index}`}>{name}</li>)}
-                  </ul>
-                </div>
-                <div><b>Description:</b> <div>{icon?.description}</div></div>
-              </Typography>
-            </CardContent>
-          </Card>
+          <IconInfoCard iconId={iconId} />
         </Container>
       </Grid>
     </Grid>
