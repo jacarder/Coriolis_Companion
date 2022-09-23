@@ -1,6 +1,5 @@
 import { Box, Button, Divider, Grid, TextField, Typography } from '@mui/material';
 import { ChangeEvent, FC, useEffect, useState, FocusEvent } from 'react';
-import { IBazaarCartItem } from '../../interfaces/bazaar-item';
 import useMarketStore from '../../store/MarketStore';
 import './BazaarCart.scss';
 interface BazaarCartProps { }
@@ -10,10 +9,9 @@ interface ICart {
   itemName: string,
   total: number
 }
-
 const BazaarCart: FC<BazaarCartProps> = () => {
   const [cartFormat, setCartFormat] = useState<ICart[]>([]);
-  const { cart, setCart } = useMarketStore();
+  const { cart, updateCart } = useMarketStore();
   useEffect(() => {
     let newCartFormat: ICart[] = [];
     cart.forEach((item) => {
@@ -37,30 +35,7 @@ const BazaarCart: FC<BazaarCartProps> = () => {
     updateCart(itemId, +e.target.value);
   }
   const handleOnBlurQuantity = (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>, itemId: number) => {
-
-    updateCart(itemId, +e.target.value, true);
-  }
-  const updateCart = (itemId: number, value: number, onBlurEvent: boolean = false) => {
-    let existingItem = cart.filter((item) => item.id === itemId)[0];
-    if (existingItem && value >= 0) {
-      existingItem.quantity = value;
-      let newCart: IBazaarCartItem[] = [];
-      if (onBlurEvent && existingItem.quantity === 0) {
-        //  Remove item from cart
-        newCart = cart.filter((item) => item.id !== existingItem.id);
-      } else {
-        cart.forEach((item) => {
-          if (item.id === existingItem.id) {
-            if (newCart.filter((cartItem) => cartItem.id === existingItem.id).length < 1) {
-              newCart.push(existingItem);
-            }
-          } else {
-            newCart.push(item);
-          }
-        })
-      }
-      setCart(newCart)
-    }
+    updateCart(itemId, +e.target.value);
   }
   const gridFlexAlign = {
     display: 'flex',

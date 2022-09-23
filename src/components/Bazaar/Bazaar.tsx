@@ -56,7 +56,7 @@ const Bazaar: FC<IBazaarProps> = (props) => {
     const { row } = props;
     const [open, setOpen] = useState(false);
     const [quantity, setQuantity] = useState(0);
-    const { cart, setCart } = useMarketStore();
+    const { cart, addItemToCart } = useMarketStore();
     const renderBonusEffects = (effects: string[]) => {
       effects = effects || [];
       return (
@@ -75,9 +75,7 @@ const Bazaar: FC<IBazaarProps> = (props) => {
         total: 0
       } as IBazaarCartItem
       const cartItem: IBazaarCartItem = { ...item, ...quantityTotal };
-      let newCart = [...cart, cartItem];
-      //  TODO setting context rerendors page    
-      setCart(newCart);
+      addItemToCart(cartItem);
       setQuantity(0);
     }
     const handleChangeQuantity = (e: ChangeEvent<HTMLInputElement>) => {

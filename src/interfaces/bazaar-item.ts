@@ -7,11 +7,11 @@ interface IBazaarItem {
 }
 
 export interface IBazaarItemDisplay extends IBazaarItem {
-	bonusEffects: string[],
-	weight: number,
-	techTier: "P" | "O" | "A" | string,
-	description: string,
-	category: BazaarCategory
+	bonusEffects: string[];
+	weight: number;
+	techTier: "P" | "O" | "A" | string;
+	description: string;
+	category: BazaarCategory;
 }
 
 export interface IBazaarCartItem extends IBazaarItem {
