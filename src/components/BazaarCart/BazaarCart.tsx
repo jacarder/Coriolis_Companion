@@ -16,7 +16,6 @@ const BazaarCart: FC<BazaarCartProps> = () => {
     display: 'flex',
     alignItems: 'flex-end'
   }
-  console.log(cart)
   return (
     <>
       <Typography variant="body2" gutterBottom component={'div'}>
