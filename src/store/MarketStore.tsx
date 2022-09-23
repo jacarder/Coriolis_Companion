@@ -22,21 +22,26 @@ const useMarketStore = create<MarketState>((set) => ({
 					...state,
 					cart: [
 						...state.cart,
-						newItem
+						{
+							...newItem,
+							total: newItem.cost * newItem.quantity,
+						}
 					]
 				}
 			}
 			return {
 				...state,
-				cart: state.cart.map(({ id, cost }) => {
+				cart: state.cart.map((item) => {
 					const totalQuantity = itemInCart.quantity + newItem.quantity;
-					const totalCost = cost * totalQuantity;
-					return {
-						...newItem,
-						id,
-						quantity: totalQuantity,
-						total: totalCost,
-					} as IBazaarCartItem;
+					const totalCost = item.cost * totalQuantity;
+					if (item.id === itemInCart.id) {
+						return {
+							...newItem,
+							quantity: totalQuantity,
+							total: totalCost,
+						};
+					}
+					return item;
 				})
 			}
 
@@ -46,6 +51,7 @@ const useMarketStore = create<MarketState>((set) => ({
 			let existingItem = state.cart.find((item) => item.id === itemId);
 			if (existingItem && quantity >= 0) {
 				existingItem.quantity = quantity;
+				existingItem.total = existingItem.cost * quantity;
 				if (existingItem.quantity === 0) {
 					//  Remove item from cart
 					return {
