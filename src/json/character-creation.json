@@ -1,0 +1,37 @@
+{
+	"subConcepts": [
+		{
+			"parentConcept": "Artist",
+			"name": "Courtesan",
+			"skills": [
+				"Manipulation",
+				"Culture",
+				"Dexterity",
+				"Observation"
+			],
+			"summary": "Well-versed in all the arts of pleasure, you live to share them with others. You could be one of the legendary courtesans of Ahlam’s Temple, a Dabaran mithra, a hierodul from the Pillar Quadrant, or perhaps an Algolan food artist."
+		},
+		{
+			"parentConcept": "Artist",
+			"name": "Musician",
+			"skills": [
+				"Manipulation",
+				"Culture",
+				"Infiltration",
+				"Observation"
+			],
+			"summary": "You are one with your instrument. Your music can communicate the most triumphant love or the blackest sorrow. You are a street performer in the Conglomerate, a cirra player, a baria chantress or a composer of blood operas in the Monolith."
+		},
+		{
+			"parentConcept": "Artist",
+			"name": "Poet",
+			"skills": [
+				"Manipulation",
+				"Culture",
+				"Dexterity",
+				"Infiltration"
+			],
+			"summary": "Your words are your art, and they stir strong emotions in your audience. You might be a psalter serving the Church of the Icon, a street poet, a Border Space singer, or a tarrab from Algol."
+		}
+	]
+}
