@@ -4,6 +4,7 @@ import HomePage from "../pages/Home";
 import IconsPage from "../pages/Icons";
 import KnowledgeCenterPage from "../pages/KnowledgeCenter";
 import ToolsPage from "../pages/Tools";
+import NPCGeneratorPage from "../pages/NPCGenerator";
 
 const routes: IRoute[] = [
 	{
@@ -17,7 +18,13 @@ const routes: IRoute[] = [
 		name: 'Tools',
 		component: ToolsPage,
 		exact: true
-	},	
+	},
+	{
+		path: '/npc-generator',
+		name: 'NPC Generator',
+		component: NPCGeneratorPage,
+		exact: true
+	},
 	{
 		path: '/bazaar',
 		name: 'Bazaar',

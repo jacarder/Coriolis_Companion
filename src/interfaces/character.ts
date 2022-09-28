@@ -1,6 +1,28 @@
 export interface ICharacter {
+	id: string,
+	name: string,
 	concept: CHARACTER_CONCEPT,
-	subConcept: ICharacterSubConcept
+	subConcept: ICharacterSubConcept,
+	description: string,
+	features: string[]
+}
+
+export interface ICharacterConcept {
+	name: string,
+	reputation: number,
+	keyAttribute: ATTRIBUTE
+}
+
+export interface ICharacterSubConcept {
+	parentConcept: CHARACTER_CONCEPT,
+	name: string,
+	skills: ISkill[],
+	summary: string,
+}
+
+export interface ISkill {
+	name: SKILL_NAME,
+	coreAttribute: ATTRIBUTE,
 }
 
 export enum CHARACTER_CONCEPT {
@@ -15,17 +37,6 @@ export enum CHARACTER_CONCEPT {
 	SHIP_WORKER = 'Ship Worker',
 	SOLDIER = 'Soldier',
 	TRAILBLAZER = 'Trailblazer'
-}
-export interface ICharacterSubConcept {
-	parentConcept: CHARACTER_CONCEPT,
-	name: string,
-	skills: ISkill[],
-	summary: string,
-}
-
-export interface ISkill {
-	name: SKILL_NAME,
-	coreAttribute: ATTRIBUTE,
 }
 
 export enum SKILL_NAME {
