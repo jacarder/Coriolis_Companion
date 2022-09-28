@@ -32,6 +32,39 @@
 				"Infiltration"
 			],
 			"summary": "Your words are your art, and they stir strong emotions in your audience. You might be a psalter serving the Church of the Icon, a street poet, a Border Space singer, or a tarrab from Algol."
+		},
+		{
+			"parentConcept": "Data Spider",
+			"name": "Analyst",
+			"skills": [
+				"Data Djinn",
+				"Culture",
+				"Manipulation",
+				"Science"
+			],
+			"summary": "You gather and compile data from many different sources and systems. Your info bank can be used to predict anything from the rebels’ coming offensive, to next segment’s fad in the Spire. You might be a corporate oracle, a data seer, or a souk analyst."
+		},
+		{
+			"parentConcept": "Data Spider",
+			"name": "Correspondent",
+			"skills": [
+				"Culture",
+				"Manipulation",
+				"Infiltration",
+				"Observation"
+			],
+			"summary": "You work for the Bulletin or some smaller news organization, collect- ing and disseminating information. You might be an embedded war correspondent with the Legionnaires on Uharu, or a freelance reporter covering the elephant trade on Algol. Some private detectives are ex-journalists."
+		},
+		{
+			"parentConcept": "Data Spider",
+			"name": "Data Djinn",
+			"skills": [
+				"Data Djinn",
+				"Manipulation",
+				"Observation",
+				"Science"
+			],
+			"summary": "You spend your days by your com- puter wherever you are. With a careful whisper, you can control and direct complex systems, extract classified information from djinn intelli- gences, or simply destroy info banks and data- bases. You could be a meme creator, a data infil- trator or just a lowly programmer for the Space Port Authority."
 		}
 	]
 }
