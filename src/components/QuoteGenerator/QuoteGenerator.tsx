@@ -1,5 +1,5 @@
 import { Button, Card, CardActions, CardContent, CircularProgress, Typography } from '@mui/material';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ApiService from '../../services/GeneratePerson.service';
 import './QuoteGenerator.scss';
 
