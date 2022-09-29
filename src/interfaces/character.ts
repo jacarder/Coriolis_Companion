@@ -4,7 +4,8 @@ export interface ICharacter {
 	concept: CHARACTER_CONCEPT,
 	subConcept: ICharacterSubConcept,
 	description: string,
-	features: string[]
+	features: string,
+	speechPattern: string
 }
 
 export interface ICharacterConcept {
