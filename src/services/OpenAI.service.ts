@@ -5,7 +5,7 @@ const config = new Configuration({
 })
 const openAI = new OpenAIApi(config);
 
-export const CreateText = async (command: OPENAI_COMMAND) => {
+export const createText = async (command: OPENAI_COMMAND) => {
 	const request = {
 		model: 'text-davinci-002',
 		prompt: command,
