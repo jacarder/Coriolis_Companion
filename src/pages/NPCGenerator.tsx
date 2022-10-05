@@ -33,7 +33,7 @@ const NPCGenerator = ({ }: Props): ReactElement => {
 					Generate NPC
 				</StyledLoadingButton>
 			</Grid>
-			<Grid container spacing={1}>
+			<Grid container spacing={1} ml={2} mr={2}>
 				{npcList.map((npc) =>
 					<Grid display="flex" key={npc.id} item xs={12} sm={6} md={6} lg={3}>
 						<CharacterCard characterInfo={npc} />
