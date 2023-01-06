@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import theme from './theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import firebase from './utils/firebase';
 
 ReactDOM.render(
   <React.StrictMode>

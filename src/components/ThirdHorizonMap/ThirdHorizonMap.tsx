@@ -1,15 +1,14 @@
-import { MapConsumer, MapContainer, Marker, Popup, TileLayer, useMapEvent } from "react-leaflet";
-import './ThirdHorizonMap.scss';
-import 'leaflet/dist/leaflet.css'
+import { Container } from "@mui/material";
 import L, { LatLngBounds } from 'leaflet';
-import icon from 'leaflet/dist/images/marker-icon.png';
-import icon2 from '../../assets/img/star_marker.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import { Box, Container, Grid } from "@mui/material";
-import SystemDetail from "./SystemDetail";
+import 'leaflet/dist/leaflet.css';
 import { useEffect, useState } from "react";
+import { MapConsumer, MapContainer, Marker, Popup, TileLayer, useMapEvent } from "react-leaflet";
+import icon2 from '../../assets/img/star_marker.png';
 import ISystemDetail from "../../interfaces/system-detail";
-import ThirdHorizonMapService from "../../services/ThirdHorizonMap.service";
+import * as ThirdHorizonMapService from "../../services/ThirdHorizonMap.service";
+import SystemDetail from "./SystemDetail";
+import './ThirdHorizonMap.scss';
+
 
 let DefaultIcon = L.icon({
 	iconSize: [15, 15],
@@ -31,10 +30,10 @@ function MyComponent() {
 const ThirdHorizonMap = () => {
 
 	const [selectedSystem, setSelectedSystem] = useState<ISystemDetail>();
-	const [systems, setSystems] = useState<[ISystemDetail]>();
+	const [systems, setSystems] = useState<ISystemDetail[]>([]);
 
 	useEffect(() => {
-		ThirdHorizonMapService.getSystems().then((data: [ISystemDetail]) => {
+		ThirdHorizonMapService.getSystems().then((data: ISystemDetail[]) => {
 			setSystems(data);
 		})
 	}, [])
@@ -51,7 +50,7 @@ const ThirdHorizonMap = () => {
 					{systems?.map((system) =>
 						<Marker
 							key={`marker-${system.id}`}
-							position={[system.lat_long.latitude, system.lat_long.longitude]}
+							position={[system.latitude, system.longitude]}
 							eventHandlers={{
 								click: (e) => {
 									setSelectedSystem(system);

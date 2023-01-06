@@ -23,7 +23,7 @@ const SystemDetail = (props: SystemDetailProps) => {
 							Name: {systemDetails?.name}
 						</Grid>
 						<Grid item xs={6}>
-							Planet Count: {systemDetails?.planetCount}
+							Planet Count: {systemDetails?.planet_count}
 						</Grid>
 					</Grid>
 				</Typography>

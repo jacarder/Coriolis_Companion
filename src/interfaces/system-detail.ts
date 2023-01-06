@@ -2,8 +2,10 @@ import { LatLngExpression } from "leaflet";
 
 
 export default interface ISystemDetail {
-	id: number;
-	lat_long: any; // TODO get the GeoPoint class from firebase. Currently not in index of firebase?
+	id: string;
+	created_at: string,
+	longitude: number,
+	latitude: number,
 	name: string;
-	planetCount: number;
+	planet_count: number;
 }

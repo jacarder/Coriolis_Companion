@@ -1,14 +1,8 @@
-import { db } from "../utils/firebase"
+import { supabase } from "../utils/supabase";
+export const getSystemDetails = async (systemId: string) => {
+	return (await supabase.from('systems').select('*').eq('id', systemId).limit(1).single()).data;
 
-export default new class ThirdHorizonMapService {
-	getSystemDetails = async (systemId: string): Promise<any> => {
-		return db.collection('Systems').doc(systemId).get().then((data) => {
-			return data.data();
-		});
-	}
-	getSystems = async (): Promise<any> => {
-		return db.collection('Systems').get().then((data) => {
-			return data.docs.map((doc: any) => doc.data())
-		});
-	}	
+}
+export const getSystems = async () => {
+	return (await supabase.from('systems').select('*')).data ?? [];
 }
