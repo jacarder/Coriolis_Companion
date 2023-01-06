@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
-import BazaarService from '../../services/Bazaar.service';
+import * as BazaarService from '../../services/Bazaar.service';
 import './Bazaar.scss';
 import { Box, Button, Collapse, Grid, IconButton, Paper, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -46,7 +46,10 @@ const Bazaar: FC<IBazaarProps> = (props) => {
   const [error, setError] = useState<string>('');
   useEffect(() => {
     if (category) {
-      setBazaarInventory(BazaarService.getBazaarInventory(category.id));
+      BazaarService.getBazaarInventory(category.id).then((data) => {
+        console.log(data)
+        setBazaarInventory(data as IBazaarItemDisplay[]);
+      })
     } else {
       setError('Error: Category does not exist.');
     }
@@ -56,8 +59,8 @@ const Bazaar: FC<IBazaarProps> = (props) => {
     const { row } = props;
     const [open, setOpen] = useState(false);
     const [quantity, setQuantity] = useState(0);
-    const { cart, addItemToCart } = useMarketStore();
-    const renderBonusEffects = (effects: string[]) => {
+    const { addItemToCart } = useMarketStore();
+    const renderBonusEffects = (effects: string[] | null) => {
       effects = effects || [];
       return (
         <ul>
@@ -92,9 +95,9 @@ const Bazaar: FC<IBazaarProps> = (props) => {
         <StyledTableRow>
           <StyledTableCell>{row.name}</StyledTableCell>
           <StyledTableCell>{row.cost}</StyledTableCell>
-          <StyledTableCell>{renderBonusEffects(row.bonusEffects)}</StyledTableCell>
+          <StyledTableCell>{renderBonusEffects(row.bonus_effects)}</StyledTableCell>
           <StyledTableCell>{row.weight}</StyledTableCell>
-          <StyledTableCell>{row.techTier}</StyledTableCell>
+          <StyledTableCell>{row.tech_tier}</StyledTableCell>
           <StyledTableCell>
             <Grid container spacing={1} style={quantityAddButtonStyle}>
               <Grid item xs={6}>

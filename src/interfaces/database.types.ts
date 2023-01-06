@@ -9,6 +9,58 @@ export type Json =
 export interface Database {
 	public: {
 		Tables: {
+			bazaar_categories: {
+				Row: {
+					id: number
+					created_at: string | null
+					title: string | null
+				}
+				Insert: {
+					id?: number
+					created_at?: string | null
+					title?: string | null
+				}
+				Update: {
+					id?: number
+					created_at?: string | null
+					title?: string | null
+				}
+			}
+			bazaar_items: {
+				Row: {
+					id: number
+					created_at: string | null
+					name: string
+					bonus_effects: string[] | null
+					cost: number
+					weight: number | null
+					tech_tier: string
+					bazaar_categories_id: number
+					description: string
+				}
+				Insert: {
+					id?: number
+					created_at?: string | null
+					name: string
+					bonus_effects?: string[] | null
+					cost: number
+					weight?: number | null
+					tech_tier?: string
+					bazaar_categories_id: number
+					description: string
+				}
+				Update: {
+					id?: number
+					created_at?: string | null
+					name?: string
+					bonus_effects?: string[] | null
+					cost?: number
+					weight?: number | null
+					tech_tier?: string
+					bazaar_categories_id?: number
+					description?: string
+				}
+			}
 			systems: {
 				Row: {
 					id: string

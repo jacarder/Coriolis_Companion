@@ -1,11 +1,6 @@
 import { BazaarCategory } from "../constants/BazaarCategory";
-import { IBazaarItemDisplay } from "../interfaces/bazaar-item";
+import { supabase } from "../utils/supabase";
 
-class BazaarService {
-	getBazaarInventory = (category: BazaarCategory): IBazaarItemDisplay[] => {
-		let inventory = require('../json/everyday-items.json') as IBazaarItemDisplay[];
-		return inventory.filter((item) => item.category === category);
-	}
+export const getBazaarInventory = async (category: BazaarCategory) => {
+	return (await supabase.from('bazaar_items').select().eq('bazaar_categories_id', category)).data
 }
-
-export default new BazaarService;
